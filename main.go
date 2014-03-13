@@ -1,10 +1,13 @@
 package main
 
 import (
+    "database/sql"
+    _ "github.com/go-sql-driver/mysql"
     "html/template"
     "net/http"
     "os"
     "fmt"
+    "log"
 )
 
 type Page struct {
@@ -18,10 +21,7 @@ type Post struct {
 }
 
 func main() {
-    http.HandleFunc("/", contactPage)
-
-    http.HandleFunc("/contact", contactPage)
-    http.HandleFunc("/contact/", contactPage)
+    http.HandleFunc("/", homePage)
 
     fileServer := http.StripPrefix("/css/", http.FileServer(http.Dir("css")))
     http.Handle("/css/", fileServer)
@@ -32,18 +32,48 @@ func main() {
     fileServer = http.StripPrefix("/html/", http.FileServer(http.Dir("html")))
     http.Handle("/html/", fileServer)
 
-    err := http.ListenAndServe(":8080", nil)
+    fmt.Println("begin")
+
+    // err := http.ListenAndServe(":8080", nil)
+    // checkError(err)
+
+    fmt.Println("1")
+
+    db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/whiteboard")
     checkError(err)
+
+    fmt.Println("2")
+    
+    var (
+        id int
+        note string
+    )
+
+    rows, err := db.Query("SELECT id, note FROM load_records")
+    checkError(err)
+    defer rows.Close()
+
+    for rows.Next() {
+        err := rows.Scan(&id, &note)
+        log.Println(id, note)
+        checkError(err)
+    }
+
+    err = rows.Err()
+    checkError(err)
+
+    fmt.Println("4")
+
 }
 
-func contactPage(rw http.ResponseWriter, req *http.Request) {
+func homePage(rw http.ResponseWriter, req *http.Request) {
     p := Page{
-        Title: "contact",
+        Title: "home",
         Posts: nil,
     }
 
     tmpl := make(map[string]*template.Template)
-    tmpl["contact.html"] = template.Must(template.ParseFiles("html/contact.html", "html/index.html"))
+    tmpl["contact.html"] = template.Must(template.ParseFiles("html/home.html", "html/index.html"))
     tmpl["contact.html"].ExecuteTemplate(rw, "base", p)
 }
 
