@@ -8165,3 +8165,14 @@ th.hidden-lg, td.hidden-lg {
   text-align: center;
   padding-top: 15px;
 }
+
+/* line 1, ../sass/layout/_standard.sass */
+.jm-standard-layout {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+/* line 5, ../sass/layout/_standard.sass */
+.jm-standard-layout .jm-main {
+  padding: 0 15px;
+}

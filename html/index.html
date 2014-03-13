@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="css/app.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container jm-standard-layout">
             <nav class="navbar navbar-default jdk-header" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -30,7 +30,9 @@
                 </div>
             </nav>
 
-            {{template "body" .}}
+            <div class="jm-main">
+                {{template "body" .}}
+            </div>
 
             <nav class="navbar navbar-default navbar-fixed-bottom jdk-footer" role="footer">
                 <small>Created by Jean, Marcus</small>
