@@ -1,0 +1,12 @@
+{{define "body"}}
+    These are my blogs
+
+    {{range .Posts}}
+        <div class="row">
+            <h2>{{.Title}}</h2>
+            <div>
+                {{.Content}}
+            </div>
+        </div>
+    {{end}}
+{{end}}
