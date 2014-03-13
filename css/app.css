@@ -8150,6 +8150,11 @@ th.hidden-lg, td.hidden-lg {
   margin: 0;
 }
 
+/* line 4, ../sass/ui_patterns/_bootstrap_overrides.sass */
+.jm-input-search {
+  width: 200px;
+}
+
 /* line 1, ../sass/modules/header/_header_module.sass */
 .jdk-header {
   border-radius: 0;

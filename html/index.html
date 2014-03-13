@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="css/app.css">
     </head>
     <body>
-        <div class="container jm-standard-layout">
+        <div class="container">
             <nav class="navbar navbar-default jdk-header" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -22,17 +22,23 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="{{if eq .Title "contact"}}active{{end}}"><a href="/">Contact</a></li>
+                        <li>
+                            <div class="input-group jm-input-search">
+                              <input type="text" class="form-control">
+                              <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">go!</button>
+                              </span>
+                            </div><!-- /input-group -->
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li class="{{if eq .Title "contact"}}active{{end}}"><a href="/">Contact</a></li>
                         <li><a target="_blank" href="/">Blank</a></li>
                     </ul>
                 </div>
             </nav>
 
-            <div class="jm-main">
-                {{template "body" .}}
-            </div>
+            {{template "body" .}}
 
             <nav class="navbar navbar-default navbar-fixed-bottom jdk-footer" role="footer">
                 <small>Created by Jean, Marcus</small>
