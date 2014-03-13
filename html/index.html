@@ -17,23 +17,27 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">ConcertSap</a>
+                    <a class="navbar-brand jm-header-text" href="/">ConcertSap</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
                             <div class="input-group jm-input-search">
-                              <input type="text" class="form-control">
-                              <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">go!</button>
-                              </span>
-                            </div><!-- /input-group -->
+                                <input type="text" class="form-control jm-searchbar">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default jm-search-btn" type="button">go!</button>
+                                </span>
+                            </div>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="{{if eq .Title "contact"}}active{{end}}"><a href="/">Contact</a></li>
-                        <li><a target="_blank" href="/">Blank</a></li>
+                        <li class="{{if eq .Title "contact"}}active{{end}}">
+                            <a class="jm-header-text" href="/">Bands</a>
+                        </li>
+                        <li>
+                            <a class="jm-header-text" target="_blank" href="/">Concerts</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

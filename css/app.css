@@ -8150,19 +8150,39 @@ th.hidden-lg, td.hidden-lg {
   margin: 0;
 }
 
-/* line 4, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.jm-input-search {
-  width: 200px;
-}
-
 /* line 1, ../sass/modules/header/_header_module.sass */
-.jdk-header {
+.jm-header {
   border-radius: 0;
   background-color: white;
   border-top: 0;
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid #e7e7e7;
+  min-height: 0;
+}
+/* line 10, ../sass/modules/header/_header_module.sass */
+.jm-header .jm-input-search {
+  width: 500px;
+}
+/* line 12, ../sass/modules/header/_header_module.sass */
+.jm-header .jm-input-search .jm-searchbar {
+  border-top: 0px;
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 0px;
+  border-left: 1px solid #e7e7e7;
+  border-radius: 0;
+}
+/* line 19, ../sass/modules/header/_header_module.sass */
+.jm-header .jm-input-search .jm-search-btn {
+  border-top: 0;
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+/* line 26, ../sass/modules/header/_header_module.sass */
+.jm-header .jm-header-text {
+  padding: 5px 15px 0px 15px;
 }
 
 /* line 1, ../sass/modules/footer/_footer_module.sass */
