@@ -8463,25 +8463,6 @@ html, body {
   border-top: 1px solid #e7e7e7;
 }
 
-.jdk-post .jdk-title {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.jdk-post .jdk-date {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-.jdk-post .jdk-paragraphs .jdk-paragraph {
-  margin-bottom: 10px;
-}
-
-.jdk-showcase {
-  padding-left: 0;
-}
-.jdk-showcase .jdk-leftnav {
-  padding-left: 0;
-}
-
 .jdk-main {
   padding-bottom: 20px;
 }
