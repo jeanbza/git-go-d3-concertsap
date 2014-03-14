@@ -16,14 +16,14 @@ func main() {
 
     var (
         id int
-        title string
+        acronym string
     )
 
-    rows := database.Select("SELECT id,title FROM post", "marcusdb")
+    rows := database.Select("SELECT id,acronym FROM state", "concertsap")
 
     for rows.Next() {
-        err := rows.Scan(&id, &title)
-        log.Println(id, title)
+        err := rows.Scan(&id, &acronym)
+        log.Println(id, acronym)
         common.CheckError(err)
     }
 
