@@ -8,6 +8,7 @@ import (
 
 func Select(query string, database string) (*sql.Rows) {
     databaseDetails := common.StrCat("root:@tcp(127.0.0.1:3306)/", database)
+    
     db, err := sql.Open("mysql", databaseDetails)
     common.CheckError(err)
 
@@ -19,6 +20,10 @@ func Select(query string, database string) (*sql.Rows) {
 
 func Insert(query string, database string) {
     databaseDetails := common.StrCat("root:@tcp(127.0.0.1:3306)/", database)
+    
     db, err := sql.Open("mysql", databaseDetails)
-    common.CheckError(err)   
+    common.CheckError(err)
+    
+    _, err = db.Query(query) 
+    common.CheckError(err)
 }
