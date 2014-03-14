@@ -11,6 +11,7 @@ import (
 func main() {
     http.HandleFunc("/", homePage)
     http.HandleFunc("/sqlEntry", sqlPage)
+    http.HandleFunc("/sqlEntrySave", sqlPageSave)
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
     http.Handle("/static/", fileServer)
@@ -27,4 +28,8 @@ func homePage(rw http.ResponseWriter, req *http.Request) {
 
 func sqlPage(rw http.ResponseWriter, req *http.Request) {
     sqlEntry.GetPage(rw, req)
+}
+
+func sqlPageSave(rw http.ResponseWriter, req *http.Request) {
+    sqlEntry.Save(rw, req)
 }

@@ -20,7 +20,9 @@ func GetPage(rw http.ResponseWriter, req *http.Request) {
     tmpl["sqlEntry.html"].ExecuteTemplate(rw, "base", p)
 }
 
-func submitHandler(rw http.ResponseWriter, req *http.Request) {
+func Save(rw http.ResponseWriter, req *http.Request) {
+    log.Println(req)
+
     concertID := req.FormValue("concertID")
     retailerID := req.FormValue("retailerID")
     price := req.FormValue("price")
