@@ -1,42 +1,23 @@
 package main
 
 import (
-    "git-go-d3-concertsap/src/common"
-    "git-go-d3-concertsap/src/home"
-    "git-go-d3-concertsap/src/data"
-    "git-go-d3-concertsap/src/sqlEntry"
+    "github.com/gorilla/mux"
+    "log"
     "net/http"
 )
 
 func main() {
-    http.HandleFunc("/", homePage)
-    
-    http.HandleFunc("/sqlEntry", sqlPage)
-    http.HandleFunc("/sqlEntrySave", sqlPageSave)
+    r := mux.NewRouter()
 
-    http.HandleFunc("/data", dataPage)
+    http.Handle("/", r)
+    r.HandleFunc("/input/{form:[a-zA-Z]+}", inputForm).Methods("GET")
 
-    fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
-    http.Handle("/static/", fileServer)
-
-    //database.Insert("INSERT INTO state (name, acronym) VALUES ('Virginia', 'VA'), ('Washington', 'WA'), ('Arizona', 'AZ'), ('Colorado', 'CO')", "concertsap")
-
-    err := http.ListenAndServe(":8080", nil)
-    common.CheckError(err)
+    log.Println("Listening...")
+    http.ListenAndServe(":8080", nil)
 }
 
-func homePage(rw http.ResponseWriter, req *http.Request) {
-    home.GetPage(rw, req)
-}
-
-func sqlPage(rw http.ResponseWriter, req *http.Request) {
-    sqlEntry.GetPage(rw, req)
-}
-
-func sqlPageSave(rw http.ResponseWriter, req *http.Request) {
-    sqlEntry.Save(rw, req)
-}
-
-func dataPage(rw http.ResponseWriter, req *http.Request) {
-    data.GetPage(rw, req)
+func inputForm(w http.ResponseWriter, r *http.Request) {
+    params := mux.Vars(r)
+    name := params["form"]
+    w.Write([]byte("Form " + name))
 }
