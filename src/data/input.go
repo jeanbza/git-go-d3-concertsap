@@ -3,15 +3,41 @@ package data
 import (
     "net/http"
     "html/template"
+    "git-go-d3-concertsap/src/database"
+    "git-go-d3-concertsap/src/common"
+    "log"
 )
 
-type Page struct {
-    Title string
-}
-
 func GetConcertForm(rw http.ResponseWriter, req *http.Request) {
+    type State struct {
+        Id   int
+        Name string
+    }
+
+    type Page struct {
+        Title  string
+        States []State
+    }
+
+    states := []State{}
+
+    var (
+        id int
+        name string
+    )
+
+    rows := database.Select("SELECT id, name FROM state", "concertsap")
+
+    for rows.Next() {
+        err := rows.Scan(&id, &name)
+        common.CheckError(err)
+
+        states = append(states, State{Id: id, Name: name})
+    }
+
     p := Page{
         Title: "data",
+        States: states,
     }
 
     tmpl := make(map[string]*template.Template)
@@ -20,6 +46,10 @@ func GetConcertForm(rw http.ResponseWriter, req *http.Request) {
 }
 
 func GetTicketForm(rw http.ResponseWriter, req *http.Request) {
+    type Page struct {
+        Title string
+    }
+
     p := Page{
         Title: "data",
     }
@@ -30,6 +60,10 @@ func GetTicketForm(rw http.ResponseWriter, req *http.Request) {
 }
 
 func Get404(rw http.ResponseWriter, req *http.Request) {
+    type Page struct {
+        Title string
+    }
+
     p := Page{
         Title: "data",
     }
