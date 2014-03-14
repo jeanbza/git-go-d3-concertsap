@@ -2,16 +2,19 @@ package main
 
 import (
     "git-go-d3-concertsap/src/common"
-//    "git-go-d3-concertsap/src/database"
     "git-go-d3-concertsap/src/home"
+    "git-go-d3-concertsap/src/data"
     "git-go-d3-concertsap/src/sqlEntry"
     "net/http"
 )
 
 func main() {
     http.HandleFunc("/", homePage)
+    
     http.HandleFunc("/sqlEntry", sqlPage)
     http.HandleFunc("/sqlEntrySave", sqlPageSave)
+
+    http.HandleFunc("/data", dataPage)
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
     http.Handle("/static/", fileServer)
@@ -32,4 +35,8 @@ func sqlPage(rw http.ResponseWriter, req *http.Request) {
 
 func sqlPageSave(rw http.ResponseWriter, req *http.Request) {
     sqlEntry.Save(rw, req)
+}
+
+func dataPage(rw http.ResponseWriter, req *http.Request) {
+    data.GetPage(rw, req)
 }
