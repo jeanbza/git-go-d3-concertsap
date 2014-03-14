@@ -16,3 +16,9 @@ func Select(query string, database string) (*sql.Rows) {
 
     return rows
 }
+
+func Insert(query string, database string) {
+    databaseDetails := common.StrCat("root:@tcp(127.0.0.1:3306)/", database)
+    db, err := sql.Open("mysql", databaseDetails)
+    common.CheckError(err)   
+}
