@@ -7,7 +7,6 @@
             <form role="form" method="POST" action="sqlEntrySave">
                 <div class="form-group">
                     <label for="conertID">Concert ID</label>
-                    <input type="text" class="form-control" name="concertID" placeholder="1 for Coachella">
                     <select class="form-control">
                         {{range .Concerts}}
                             <option value="{{.Id}}">{{.Name}}</option>
@@ -16,7 +15,11 @@
                 </div>
                 <div class="form-group">
                     <label for="retailerID">Retailer ID</label>
-                    <input type="text" class="form-control" name="retailerID" placeholder="1 for Stubhub">
+                    <select class="form-control">
+                        {{range .Retailers}}
+                            <option value="{{.Id}}">{{.Name}}</option>
+                        {{end}}
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="price">Price</label>
