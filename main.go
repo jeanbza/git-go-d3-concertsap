@@ -5,6 +5,7 @@ import (
     "net/http"
     "git-go-d3-concertsap/src/data"
     "git-go-d3-concertsap/src/home"
+    "git-go-d3-concertsap/src/sqlEntry"
 )
 
 func main() {
@@ -14,6 +15,7 @@ func main() {
     
     r.HandleFunc("/", HandleHome).Methods("GET")
     r.HandleFunc("/input/{form:[a-zA-Z]*}", HandleInput).Methods("GET")
+    r.HandleFunc("/sqlEntry", sqlEntryHandler).Methods("GET")
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
     http.Handle("/static/", fileServer)
@@ -37,4 +39,8 @@ func HandleInput(w http.ResponseWriter, r *http.Request) {
 
 func HandleHome(rw http.ResponseWriter, req *http.Request) {
     home.GetPage(rw, req)
+}
+
+func sqlEntryHandler(rw http.ResponseWriter, req *http.Request) {
+    sqlEntry.GetPage(rw, req)
 }

@@ -15,34 +15,49 @@ type Page struct {
 }
 
 type Concert struct {
-    id int
-    name string
+    Id int
+    Name string
 }
 
 type Retailer struct {
-    id int
-    name string
+    Id int
+    Name string
 }
 
 func GetPage(rw http.ResponseWriter, req *http.Request) {
-    // connect to db and query concerts and retailers
+    // define concert and retailers arrays to pass into
+    // Page instantiation
+    concerts := []Concert{}
+    retailers := []Retailer{}
+
     var (
         id int
         name string
     )
 
+    // connect to db and query concerts
     rows := database.Select("SELECT id,name FROM concert", "concertsap")
 
     for rows.Next() {
         err := rows.Scan(&id, &name)
         common.CheckError(err)
         log.Println(id, name)
+        concerts = append(concerts, Concert{ Id:id, Name:name })
     }
 
+    // connect to db and query retailers
+    rows = database.Select("SELECT id,name FROM retailer", "concertsap")
+
+    for rows.Next() {
+        err := rows.Scan(&id, &name)
+        common.CheckError(err)
+        log.Println(id, name)
+        retailers = append(retailers, Retailer{ Id:id, Name:name })
+    }
     p := Page{
         Title: "sqlEntry",
-        //Concerts: ,
-        //Retailers: ,
+        Concerts: concerts,
+        Retailers: retailers,
     }
 
     tmpl := make(map[string]*template.Template)

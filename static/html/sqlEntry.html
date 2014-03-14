@@ -8,6 +8,11 @@
                 <div class="form-group">
                     <label for="conertID">Concert ID</label>
                     <input type="text" class="form-control" name="concertID" placeholder="1 for Coachella">
+                    <select class="form-control">
+                        {{range .Concerts}}
+                            <option value="{{.Id}}">{{.Name}}</option>
+                        {{end}}
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="retailerID">Retailer ID</label>
