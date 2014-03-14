@@ -1,3 +1,11 @@
 {{define "form"}}
-    This is the concert form
+    <br>
+
+    <form role="form">
+        <select class="form-control">
+            {{range .States}}
+                <option value="{{.Id}}">{{.Name}}</option>
+            {{end}}
+        </select>
+    </form>
 {{end}}
