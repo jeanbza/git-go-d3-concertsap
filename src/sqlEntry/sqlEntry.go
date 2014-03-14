@@ -1,6 +1,8 @@
 package sqlEntry
 
 import (
+    "git-go-d3-concertsap/src/common"
+    "git-go-d3-concertsap/src/database"
     "net/http"
     "html/template"
     "log"
@@ -8,11 +10,39 @@ import (
 
 type Page struct {
     Title string
+    Concerts []Concert
+    Retailers []Retailer
+}
+
+type Concert struct {
+    id int
+    name string
+}
+
+type Retailer struct {
+    id int
+    name string
 }
 
 func GetPage(rw http.ResponseWriter, req *http.Request) {
+    // connect to db and query concerts and retailers
+    var (
+        id int
+        name string
+    )
+
+    rows := database.Select("SELECT id,name FROM concert", "concertsap")
+
+    for rows.Next() {
+        err := rows.Scan(&id, &name)
+        common.CheckError(err)
+        log.Println(id, name)
+    }
+
     p := Page{
         Title: "sqlEntry",
+        //Concerts: ,
+        //Retailers: ,
     }
 
     tmpl := make(map[string]*template.Template)
