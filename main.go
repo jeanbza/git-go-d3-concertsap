@@ -16,14 +16,14 @@ func main() {
 
     var (
         id int
-        note string
+        title string
     )
 
-    rows := database.Select("SELECT id, note FROM load_records")
+    rows := database.Select("SELECT id,title FROM post", "marcusdb")
 
     for rows.Next() {
-        err := rows.Scan(&id, &note)
-        log.Println(id, note)
+        err := rows.Scan(&id, &title)
+        log.Println(id, title)
         common.CheckError(err)
     }
 

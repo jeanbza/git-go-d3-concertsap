@@ -6,8 +6,9 @@ import (
     "git-go-d3-concertsap/src/common"
 )
 
-func Select(query string) (*sql.Rows) {
-    db, err := sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/whiteboard")
+func Select(query string, database string) (*sql.Rows) {
+    database_details := common.StrCat("root:@tcp(127.0.0.1:3306)/", database)
+    db, err := sql.Open("mysql", database_details)
     common.CheckError(err)
 
     rows, err := db.Query(query)
