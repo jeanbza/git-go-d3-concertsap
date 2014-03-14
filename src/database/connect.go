@@ -7,8 +7,8 @@ import (
 )
 
 func Select(query string, database string) (*sql.Rows) {
-    database_details := common.StrCat("root:@tcp(127.0.0.1:3306)/", database)
-    db, err := sql.Open("mysql", database_details)
+    databaseDetails := common.StrCat("root:@tcp(127.0.0.1:3306)/", database)
+    db, err := sql.Open("mysql", databaseDetails)
     common.CheckError(err)
 
     rows, err := db.Query(query)
