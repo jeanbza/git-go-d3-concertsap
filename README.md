@@ -1,18 +1,11 @@
-git-go-jeansite
+git-go-d3-concertsap
 ===============
 
-This is my website written in go.
+### Installation ###
 
-You will need:
-- Go
-- Git
-
-To build:
-
-go build main.go
-
-To run:
-
-./main
-
-http://localhost::8080
+1. go get github.com/go-sql-driver/mysql
+2. cd ~/go/src
+3. git clone https://github.com/jadekler/git-go-d3-concertsap.git
+4. cd git-go-d3-concertsap
+5. go build main.go
+6. ./main
