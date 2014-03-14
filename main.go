@@ -3,7 +3,7 @@ package main
 import (
     "github.com/gorilla/mux"
     "net/http"
-    "git-go-d3-concertsap/src/data"
+    "git-go-d3-concertsap/src/collect"
     "git-go-d3-concertsap/src/home"
     "git-go-d3-concertsap/src/sqlEntry"
 )
@@ -14,8 +14,7 @@ func main() {
     http.Handle("/", r)
     
     r.HandleFunc("/", HandleHome).Methods("GET")
-    r.HandleFunc("/input/{form:[a-zA-Z]*}", HandleInput).Methods("GET")
-    r.HandleFunc("/sqlEntry", sqlEntryHandler).Methods("GET")
+    r.HandleFunc("/collect/{form:[a-zA-Z]*}", HandleCollect).Methods("GET")
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
     http.Handle("/static/", fileServer)
@@ -23,7 +22,7 @@ func main() {
     http.ListenAndServe(":8080", nil)
 }
 
-func HandleInput(w http.ResponseWriter, r *http.Request) {
+func HandleCollect(w http.ResponseWriter, r *http.Request) {
     params := mux.Vars(r)
     form := params["form"]
 
@@ -32,6 +31,8 @@ func HandleInput(w http.ResponseWriter, r *http.Request) {
         data.GetConcertForm(w, r)
     case "ticket":
         data.GetTicketForm(w, r)
+    case "save":
+        data.SaveForm(w, r)
     default:
         data.Get404(w, r)
     }
@@ -39,8 +40,4 @@ func HandleInput(w http.ResponseWriter, r *http.Request) {
 
 func HandleHome(rw http.ResponseWriter, req *http.Request) {
     home.GetPage(rw, req)
-}
-
-func sqlEntryHandler(rw http.ResponseWriter, req *http.Request) {
-    sqlEntry.GetPage(rw, req)
 }
