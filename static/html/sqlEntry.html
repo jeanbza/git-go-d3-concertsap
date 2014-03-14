@@ -1,3 +1,19 @@
 {{define "body"}}
-    This is the sql entry
+    <!-- db: concertsap table: ticket_records -->
+    <!-- fields: price concert_id retailer_id timestamp -->
+    <form role="form">
+        <div class="form-group">
+            <label for="conertID">Concert ID</label>
+            <input type="text" class="form-control" id="concertID" placeholder="1 for Coachella">
+        </div>
+        <div class="form-group">
+            <label for="retailerID">Retailer ID</label>
+            <input type="text" class="form-control" id="retailerID" placeholder="1 for Stubhub">
+        </div>
+        <div class="form-group">
+            <label for="timestamp">Timestamp</label>
+            <input type="text" class="form-control" id="timestamp" placeholder="2014-03-13 00:00:00">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
 {{end}}
