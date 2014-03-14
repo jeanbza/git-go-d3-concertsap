@@ -5,7 +5,6 @@ import (
     "net/http"
     "git-go-d3-concertsap/src/collect"
     "git-go-d3-concertsap/src/home"
-    "git-go-d3-concertsap/src/sqlEntry"
 )
 
 func main() {
@@ -28,13 +27,13 @@ func HandleCollect(w http.ResponseWriter, r *http.Request) {
 
     switch form {
     case "concert":
-        data.GetConcertForm(w, r)
+        collect.GetConcertForm(w, r)
     case "ticket":
-        data.GetTicketForm(w, r)
+        collect.GetTicketForm(w, r)
     case "save":
-        data.SaveForm(w, r)
+        collect.SaveForm(w, r)
     default:
-        data.Get404(w, r)
+        collect.Get404(w, r)
     }
 }
 

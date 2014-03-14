@@ -1,14 +1,11 @@
 package collect
 
 import (
-    // "git-go-d3-concertsap/src/common"
-    // "git-go-d3-concertsap/src/database"
      "net/http"
-    // "html/template"
      "log"
 )
 
-func Save(rw http.ResponseWriter, req *http.Request) {
+func SaveForm(rw http.ResponseWriter, req *http.Request) {
     log.Println(req)
 
     concertID := req.FormValue("concertID")
