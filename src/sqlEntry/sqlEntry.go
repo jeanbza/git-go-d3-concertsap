@@ -3,7 +3,7 @@ package sqlEntry
 import (
     "net/http"
     "html/template"
-    "fmt"
+    "log"
 )
 
 type Page struct {
@@ -26,10 +26,7 @@ func submitHandler(rw http.ResponseWriter, req *http.Request) {
     price := req.FormValue("price")
     timestamp := req.FormValue("timestamp")
 
-    fmt.Printf(concertID)
-    fmt.Printf(retailerID)
-    fmt.Printf(price)
-    fmt.Printf(timestamp)
+    log.Println(concertID, retailerID, price, timestamp)
 
     http.Redirect(rw, req, "/sqlEntry", http.StatusFound)
 }
