@@ -2,22 +2,32 @@ package main
 
 import (
     "github.com/gorilla/mux"
-    "log"
     "net/http"
+    "git-go-d3-concertsap/src/data"
 )
 
 func main() {
     r := mux.NewRouter()
 
     http.Handle("/", r)
-    r.HandleFunc("/input/{form:[a-zA-Z]+}", inputForm).Methods("GET")
+    r.HandleFunc("/input/{form:[a-zA-Z]*}", HandleInput).Methods("GET")
 
-    log.Println("Listening...")
+    fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
+    http.Handle("/static/", fileServer)
+
     http.ListenAndServe(":8080", nil)
 }
 
-func inputForm(w http.ResponseWriter, r *http.Request) {
+func HandleInput(w http.ResponseWriter, r *http.Request) {
     params := mux.Vars(r)
-    name := params["form"]
-    w.Write([]byte("Form " + name))
+    form := params["form"]
+
+    switch form {
+    case "concert":
+        data.GetConcertForm(w, r)
+    case "ticket":
+        data.GetTicketForm(w, r)
+    default:
+        data.Get404(w, r)
+    }
 }
