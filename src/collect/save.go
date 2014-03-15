@@ -1,9 +1,9 @@
 package collect
 
 import (
-     "net/http"
-     "git-go-d3-concertsap/src/database"
-     "git-go-d3-concertsap/src/common"
+    "net/http"
+    "git-go-d3-concertsap/src/database"
+    "git-go-d3-concertsap/src/common"
 )
 
 func SaveForm(rw http.ResponseWriter, r *http.Request) {
@@ -11,11 +11,16 @@ func SaveForm(rw http.ResponseWriter, r *http.Request) {
     common.CheckError(err)
     form := r.Form
 
-    columns := []string{"timestamp"}
-    values  := []string{"NOW()"}
+    var (
+        columns []string
+        values  []string
+    )
+
+    if form["timestamp"][0] == "" {
+        form["timestamp"][0] = "NOW()"
+    }
 
     sql := "INSERT INTO "+form["database"][0]+"("
-
     
     for column := range form {
         if column != "database" {
