@@ -5,9 +5,11 @@
         </div>
         <div class="panel-body">
             <form role="form" method="POST" action="save">
+                <input type="hidden" name="database" value="ticket_records"></input>
+                <input type="hidden" name="id" value="NULL"></input>
                 <div class="form-group">
                     <label for="conertID">Concert ID</label>
-                    <select class="form-control">
+                    <select class="form-control" name="concert_id">
                         {{range .Concerts}}
                             <option value="{{.Id}}">{{.Name}}</option>
                         {{end}}
@@ -15,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label for="retailerID">Retailer ID</label>
-                    <select class="form-control">
+                    <select class="form-control" name="retailer_id">
                         {{range .Retailers}}
                             <option value="{{.Id}}">{{.Name}}</option>
                         {{end}}
@@ -24,10 +26,6 @@
                 <div class="form-group">
                     <label for="price">Price</label>
                     <input type="text" class="form-control" name="price" placeholder="400">
-                </div>
-                <div class="form-group">
-                    <label for="timestamp">Timestamp</label>
-                    <input type="text" class="form-control" name="timestamp" placeholder="2014-03-13 00:00:00">
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>

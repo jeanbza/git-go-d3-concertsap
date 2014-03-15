@@ -13,7 +13,7 @@ func main() {
     http.Handle("/", r)
     
     r.HandleFunc("/", HandleHome).Methods("GET")
-    r.HandleFunc("/collect/{form:[a-zA-Z]*}", HandleCollect).Methods("GET")
+    r.HandleFunc("/collect/{form:[a-zA-Z]*}", HandleCollect).Methods("GET", "POST")
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
     http.Handle("/static/", fileServer)

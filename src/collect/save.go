@@ -3,17 +3,52 @@ package collect
 import (
      "net/http"
      "log"
+     // "git-go-d3-concertsap/src/database"
+     "git-go-d3-concertsap/src/common"
 )
 
-func SaveForm(rw http.ResponseWriter, req *http.Request) {
-    log.Println(req)
+func SaveForm(rw http.ResponseWriter, r *http.Request) {
+    err := r.ParseForm()
+    common.CheckError(err)
+    form := r.Form
 
-    concertID := req.FormValue("concertID")
-    retailerID := req.FormValue("retailerID")
-    price := req.FormValue("price")
-    timestamp := req.FormValue("timestamp")
+    var (
+        columns []string
+        values  []string
+    )
 
-    log.Println(concertID, retailerID, price, timestamp)
+    sql := "INSERT INTO "+form["database"][0]+"("
+    i := 0
+    
+    for column := range form {
+        if column != "database" {
+            columns = append(columns, column)
+            values = append(values, form[column][0])
 
-    http.Redirect(rw, req, "/collect/ticket", http.StatusFound)
+            if i != 0 {
+                sql += ","
+            }
+
+            sql += column
+            i++
+        }
+    }
+
+    sql += ") VALUES ("
+    i = 0
+
+    for index := range values {
+        if i != 0 {
+            sql += ","
+        }
+
+        sql += values[index]
+        i++
+    }
+
+    sql += ")"
+
+    log.Println(sql)
+
+    // http.Redirect(rw, req, "/", http.StatusFound)
 }
