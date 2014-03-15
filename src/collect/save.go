@@ -3,8 +3,6 @@ package collect
 import (
      "net/http"
      "log"
-     "git-go-d3-concertsap/src/database"
-     "git-go-d3-concertsap/src/common"
 )
 
 func SaveForm(rw http.ResponseWriter, req *http.Request) {
