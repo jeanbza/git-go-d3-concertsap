@@ -2,8 +2,7 @@ package collect
 
 import (
      "net/http"
-     "log"
-     // "git-go-d3-concertsap/src/database"
+     "git-go-d3-concertsap/src/database"
      "git-go-d3-concertsap/src/common"
 )
 
@@ -20,7 +19,6 @@ func SaveForm(rw http.ResponseWriter, r *http.Request) {
     
     for column := range form {
         if column != "database" {
-            log.Println(columns)
             columns = append(columns, column)
             values = append(values, form[column][0])
         }
@@ -50,9 +48,7 @@ func SaveForm(rw http.ResponseWriter, r *http.Request) {
 
     sql += ")"
 
-    log.Println(sql)
-
-    // add database INSERT code here
+    database.Insert(sql, "concertsap")
 
     http.Redirect(rw, r, "/collect/ticket", http.StatusFound)
 }
