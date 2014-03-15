@@ -5,8 +5,17 @@ import (
     "html/template"
     "git-go-d3-concertsap/src/database"
     "git-go-d3-concertsap/src/common"
-    //"log"
 )
+
+func getCollectFiles(args ...string) ([]string) {
+    files := []string{"static/html/collect/collect.html", "static/html/index.html"}
+    
+    for i := range args {
+        files = append(files, args[i])
+    }
+    
+    return files
+}
 
 func GetConcertForm(rw http.ResponseWriter, req *http.Request) {
     type State struct {
@@ -41,7 +50,7 @@ func GetConcertForm(rw http.ResponseWriter, req *http.Request) {
     }
 
     tmpl := make(map[string]*template.Template)
-    tmpl["data.html"] = template.Must(template.ParseFiles("static/html/collect/concertform.html", "static/html/collect/collect.html", "static/html/index.html"))
+    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("static/html/collect/concertform.html")...))
     tmpl["data.html"].ExecuteTemplate(rw, "base", p)
 }
 
@@ -99,7 +108,7 @@ func GetTicketForm(rw http.ResponseWriter, req *http.Request) {
     }
 
     tmpl := make(map[string]*template.Template)
-    tmpl["data.html"] = template.Must(template.ParseFiles("static/html/collect/ticketform.html", "static/html/collect/collect.html", "static/html/index.html"))
+    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("static/html/collect/ticketform.html")...))
     tmpl["data.html"].ExecuteTemplate(rw, "base", p)
 }
 
@@ -113,6 +122,6 @@ func Get404(rw http.ResponseWriter, req *http.Request) {
     }
 
     tmpl := make(map[string]*template.Template)
-    tmpl["data.html"] = template.Must(template.ParseFiles("static/html/collect/404.html", "static/html/collect/collect.html", "static/html/index.html"))
+    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("static/html/collect/404.html")...))
     tmpl["data.html"].ExecuteTemplate(rw, "base", p)
 }
