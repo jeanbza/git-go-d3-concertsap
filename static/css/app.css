@@ -8389,28 +8389,6 @@ th.hidden-lg, td.hidden-lg {
   margin: 0;
 }
 
-code {
-  display: block;
-  white-space: pre-line;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-pre {
-  padding-right: 0;
-  padding-left: 10px;
-  font-size: 10px;
-  line-height: 12px;
-  margin-top: 0;
-  margin-bottom: 10px;
-  max-height: 300px;
-  overflow-y: scroll;
-}
-
-.jdk-blog-post .container, .jdk-blog-post .col-md-4 {
-  padding-left: 0;
-}
-
 .jm-header {
   border-radius: 0;
   background-color: white;
@@ -8445,14 +8423,14 @@ html, body {
   height: 100%;
 }
 
-.jm-main {
+.jm-standard-layout {
   clear: both;
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin-bottom: -30px;
 }
-.jm-main .jm-footer-root {
+.jm-standard-layout .jm-footer-root {
   height: 30px;
 }
 
@@ -8469,7 +8447,6 @@ html, body {
 }
 
 .jm-standard-layout {
-  margin: 0;
   padding: 0;
   width: 100%;
 }
