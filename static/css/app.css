@@ -8411,58 +8411,68 @@ pre {
   padding-left: 0;
 }
 
-.jdk-header {
+.jm-header {
   border-radius: 0;
   background-color: white;
   border-top: 0;
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid #e7e7e7;
+  min-height: 0;
 }
-@media screen and (max-width: 767px) {
-  .jdk-header .jdk-icon {
-    display: none;
-  }
-  .jdk-header .jdk-text {
-    display: block;
-  }
+.jm-header .jm-input-search {
+  width: 500px;
 }
-@media screen and (min-width: 767px) {
-  .jdk-header .jdk-icon {
-    display: block;
-  }
-  .jdk-header .jdk-text {
-    display: none;
-  }
+.jm-header .jm-input-search .jm-searchbar {
+  border-top: 0px;
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 0px;
+  border-left: 1px solid #e7e7e7;
+  border-radius: 0;
+}
+.jm-header .jm-input-search .jm-search-btn {
+  border-top: 0;
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+.jm-header .jm-header-text {
+  padding: 5px 15px 0px 15px;
 }
 
 html, body {
   height: 100%;
 }
 
-.jdk-main {
+.jm-main {
   clear: both;
   min-height: 100%;
   height: auto !important;
   height: 100%;
   margin-bottom: -30px;
 }
-.jdk-main .jdk-footer-root {
+.jm-main .jm-footer-root {
   height: 30px;
 }
 
-.jdk-footer {
+.jm-footer {
   clear: both;
   position: relative;
   height: 30px;
 }
 
-.jdk-footer {
+.jm-footer {
   text-align: center;
   padding-top: 5px;
   border-top: 1px solid #e7e7e7;
 }
 
-.jdk-main {
-  padding-bottom: 20px;
+.jm-standard-layout {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.jm-standard-layout .jm-main {
+  padding: 0 15px;
 }
