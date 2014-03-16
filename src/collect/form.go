@@ -35,7 +35,7 @@ func GetConcertForm(rw http.ResponseWriter, req *http.Request) {
         name string
     )
 
-    rows := database.Select("SELECT id, name FROM state", "concertsap")
+    rows := database.Select("SELECT id, name FROM state ORDER BY name", "concertsap")
 
     for rows.Next() {
         err := rows.Scan(&id, &name)
@@ -84,7 +84,7 @@ func GetTicketForm(rw http.ResponseWriter, req *http.Request) {
     )
 
     // connect to db and query concerts
-    rows := database.Select("SELECT id,name FROM concert", "concertsap")
+    rows := database.Select("SELECT id,name FROM concert ORDER BY name", "concertsap")
 
     for rows.Next() {
         err := rows.Scan(&id, &name)
@@ -93,7 +93,7 @@ func GetTicketForm(rw http.ResponseWriter, req *http.Request) {
     }
 
     // connect to db and query retailers
-    rows = database.Select("SELECT id,name FROM retailer", "concertsap")
+    rows = database.Select("SELECT id,name FROM retailer ORDER BY name", "concertsap")
 
     for rows.Next() {
         err := rows.Scan(&id, &name)
