@@ -24,15 +24,16 @@ func GetConcertForm(rw http.ResponseWriter, req *http.Request) {
     }
 
     type Page struct {
-        Title  string
-        States []State
+        PageName    string
+        Title       string
+        States      []State
     }
 
     states := []State{}
 
     var (
-        id int
-        name string
+        id      int
+        name    string
     )
 
     rows := database.Select("SELECT id, name FROM state ORDER BY name", "concertsap")
@@ -45,8 +46,9 @@ func GetConcertForm(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        Title: "data",
-        States: states,
+        PageName:   "data",
+        Title:      "Add A Concert",
+        States:     states,
     }
 
     tmpl := make(map[string]*template.Template)
@@ -60,27 +62,28 @@ func GetTicketForm(rw http.ResponseWriter, req *http.Request) {
      * Page instantiation
      */
     type Concert struct {
-        Id int
-        Name string
+        Id      int
+        Name    string
     }
 
     type Retailer struct {
-        Id int
-        Name string
+        Id      int
+        Name    string
     }
 
     type Page struct {
-        Title string
-        Concerts []Concert
-        Retailers []Retailer 
+        PageName    string
+        Title       string
+        Concerts    []Concert
+        Retailers   []Retailer 
     }
 
     concerts := []Concert{}
     retailers := []Retailer{}
 
     var (
-        id int
-        name string
+        id      int
+        name    string
     )
 
     // connect to db and query concerts
@@ -102,9 +105,10 @@ func GetTicketForm(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        Title: "data",
-        Concerts: concerts,
-        Retailers: retailers,
+        PageName:   "data",
+        Title:      "Add A Ticket Record",
+        Concerts:   concerts,
+        Retailers:  retailers,
     }
 
     tmpl := make(map[string]*template.Template)
