@@ -8,7 +8,7 @@ import (
 )
 
 func getCollectFiles(args ...string) ([]string) {
-    files := []string{"static/html/collect/collect.html", "static/html/index.html"}
+    files := []string{"templates/collect/collect.html", "templates/index.html"}
     
     for i := range args {
         files = append(files, args[i])
@@ -52,7 +52,7 @@ func GetConcertForm(rw http.ResponseWriter, req *http.Request) {
     }
 
     tmpl := make(map[string]*template.Template)
-    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("static/html/collect/concertform.html")...))
+    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("templates/collect/concertform.html")...))
     tmpl["data.html"].ExecuteTemplate(rw, "base", p)
 }
 
@@ -112,7 +112,7 @@ func GetTicketForm(rw http.ResponseWriter, req *http.Request) {
     }
 
     tmpl := make(map[string]*template.Template)
-    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("static/html/collect/ticketform.html")...))
+    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("templates/collect/ticketform.html")...))
     tmpl["data.html"].ExecuteTemplate(rw, "base", p)
 }
 
@@ -126,6 +126,6 @@ func Get404(rw http.ResponseWriter, req *http.Request) {
     }
 
     tmpl := make(map[string]*template.Template)
-    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("static/html/collect/404.html")...))
+    tmpl["data.html"] = template.Must(template.ParseFiles(getCollectFiles("templates/collect/404.html")...))
     tmpl["data.html"].ExecuteTemplate(rw, "base", p)
 }
