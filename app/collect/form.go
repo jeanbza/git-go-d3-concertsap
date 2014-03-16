@@ -3,8 +3,8 @@ package collect
 import (
     "net/http"
     "html/template"
-    "git-go-d3-concertsap/src/database"
-    "git-go-d3-concertsap/src/common"
+    "git-go-d3-concertsap/app/database"
+    "git-go-d3-concertsap/app/common"
 )
 
 func getCollectFiles(args ...string) ([]string) {

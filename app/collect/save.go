@@ -2,8 +2,8 @@ package collect
 
 import (
     "net/http"
-    "git-go-d3-concertsap/src/database"
-    "git-go-d3-concertsap/src/common"
+    "git-go-d3-concertsap/app/database"
+    "git-go-d3-concertsap/app/common"
 )
 
 func SaveForm(rw http.ResponseWriter, r *http.Request) {

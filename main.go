@@ -3,8 +3,8 @@ package main
 import (
     "github.com/gorilla/mux"
     "net/http"
-    "git-go-d3-concertsap/src/collect"
-    "git-go-d3-concertsap/src/home"
+    "git-go-d3-concertsap/app/collect"
+    "git-go-d3-concertsap/app/home"
 )
 
 func main() {

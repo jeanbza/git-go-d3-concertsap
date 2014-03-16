@@ -3,7 +3,7 @@ package database
 import (
     _ "github.com/go-sql-driver/mysql"
     "database/sql"
-    "git-go-d3-concertsap/src/common"
+    "git-go-d3-concertsap/app/common"
 )
 
 func Select(query string, database string) (*sql.Rows) {
