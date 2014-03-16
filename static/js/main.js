@@ -22,10 +22,11 @@ require.config({
 });
 
 require([
-    'jquery'
+    'jquery',
+    'bootstrap'
 ], 
 function ($) {
     $(document).ready(function() {
-        console.dir("boom");
+        $('.dropdown-toggle').dropdown();
     });
 });
