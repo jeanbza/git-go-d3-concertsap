@@ -8,6 +8,8 @@ import (
 )
 
 func main() {
+    concert.PrintAll()
+
     r := mux.NewRouter()
 
     http.Handle("/", r)
