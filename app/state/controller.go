@@ -4,6 +4,8 @@ import (
     "net/http"
     "html/template"
     "github.com/gorilla/mux"
+    "git-go-d3-concertsap/app/database"
+    "git-go-d3-concertsap/app/common"
 )
 
 func Route(s *mux.Router) {
@@ -69,6 +71,18 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
 }
 
 func addHandler(rw http.ResponseWriter, req *http.Request) {
+    if req.Method == "POST" {
+        dbmap := db.InitDb()
+        defer dbmap.Db.Close()
+
+        err := req.ParseForm()
+        common.CheckError(err)
+        form := req.Form
+
+        err = dbmap.Insert(&db.State{Name: form["name"][0], Acronym: form["acronym"][0]})
+        common.CheckError(err)
+    }
+
     type Page struct {
         PageName    string
         Title       string
