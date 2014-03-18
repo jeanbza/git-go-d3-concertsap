@@ -1,0 +1,21 @@
+{{define "body"}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>{{.Title}}</h2>
+        </div>
+        <div class="panel-body">
+            <form role="form" method="POST" action="save">
+                <input type="hidden" name="database" value="state"></input>
+                <div class="form-group">
+                    <label for="price">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="California">
+                </div>
+                <div class="form-group">
+                    <label for="price">Acronym</label>
+                    <input type="text" class="form-control" name="acronym" placeholder="CA">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+{{end}}

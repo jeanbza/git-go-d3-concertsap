@@ -24,7 +24,9 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="{{if eq .PageName "home"}}active{{end}}"><a href="/">Home</a></li>
-                        <li class="{{if eq .PageName "home"}}active{{end}}"><a href="/collect/concert">Concerts</a></li>
+                        <li class="{{if eq .PageName "concert"}}active{{end}}"><a href="/concert/">Concerts</a></li>
+                        <li class="{{if eq .PageName "state"}}active{{end}}"><a href="/state/">States</a></li>
+                        <li class="{{if eq .PageName "retailer"}}active{{end}}"><a href="/retailer/">Retailers</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a target="_blank" href="https://github.com/jadekler/git-go-d3-concertsap">Site Code</a></li>

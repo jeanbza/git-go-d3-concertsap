@@ -5,6 +5,8 @@ import (
     "net/http"
     "git-go-d3-concertsap/app/home"
     "git-go-d3-concertsap/app/concert"
+    "git-go-d3-concertsap/app/state"
+    "git-go-d3-concertsap/app/retailer"
     "git-go-d3-concertsap/app/database"
 )
 
@@ -20,6 +22,14 @@ func main() {
     // Concert
     s := r.PathPrefix("/concert").Subrouter()
     concert.Route(s)
+
+    // Retailer
+    s = r.PathPrefix("/retailer").Subrouter()
+    retailer.Route(s)
+
+    // State
+    s = r.PathPrefix("/state").Subrouter()
+    state.Route(s)
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
     http.Handle("/static/", fileServer)
