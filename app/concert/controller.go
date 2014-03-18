@@ -4,6 +4,8 @@ import (
     "net/http"
     "html/template"
     "github.com/gorilla/mux"
+    "git-go-d3-concertsap/app/state"
+    "git-go-d3-concertsap/app/database"
 )
 
 func Route(s *mux.Router) {
@@ -72,11 +74,13 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
+        States      []db.State
     }
 
     p := Page{
         PageName:   "concert",
         Title:      "Add Controller",
+        States:     state.FindAll(),
     }
 
     tmpl := make(map[string]*template.Template)

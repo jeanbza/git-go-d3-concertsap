@@ -5,10 +5,11 @@ import (
     "net/http"
     "git-go-d3-concertsap/app/home"
     "git-go-d3-concertsap/app/concert"
+    "git-go-d3-concertsap/app/database"
 )
 
 func main() {
-    concert.PrintAll()
+    db.InitDb()
 
     r := mux.NewRouter()
 
