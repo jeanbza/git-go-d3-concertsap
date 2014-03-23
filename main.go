@@ -1,13 +1,16 @@
 package main
 
 import (
-    "github.com/gorilla/mux"
     "net/http"
+
     "git-go-d3-concertsap/app/home"
     "git-go-d3-concertsap/app/concert"
     "git-go-d3-concertsap/app/state"
+    "git-go-d3-concertsap/app/band"
     "git-go-d3-concertsap/app/retailer"
     "git-go-d3-concertsap/app/database"
+
+    "github.com/gorilla/mux"
 )
 
 func main() {
@@ -30,6 +33,10 @@ func main() {
     // State
     s = r.PathPrefix("/state").Subrouter()
     state.Route(s)
+
+    // Band
+    s = r.PathPrefix("/band").Subrouter()
+    band.Route(s)
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
     http.Handle("/static/", fileServer)
