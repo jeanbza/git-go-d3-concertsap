@@ -3,6 +3,8 @@ package home
 import (
     "net/http"
     "html/template"
+
+    "git-go-d3-concertsap/app/common"
 )
 
 type Page struct {
@@ -16,7 +18,7 @@ func GetPage(rw http.ResponseWriter, req *http.Request) {
         Title:      "Home",
     }
 
-    tmpl := make(map[string]*template.Template)
-    tmpl["home.html"] = template.Must(template.ParseFiles("templates/home/home.html", "templates/index.html"))
-    tmpl["home.html"].ExecuteTemplate(rw, "base", p)
+    common.Templates = template.Must(template.ParseFiles("templates/home/home.html", common.LayoutPath))
+    err := common.Templates.ExecuteTemplate(rw, "base", p)
+    common.CheckError(err)
 }

@@ -3,9 +3,12 @@ package concert
 import (
     "net/http"
     "html/template"
-    "github.com/gorilla/mux"
+    
+    "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/state"
     "git-go-d3-concertsap/app/database"
+
+    "github.com/gorilla/mux"
 )
 
 func Route(s *mux.Router) {
@@ -27,9 +30,9 @@ func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "View All Controller",
     }
 
-    tmpl := make(map[string]*template.Template)
-    tmpl["concert.html"] = template.Must(template.ParseFiles("templates/concert/viewAll.html", "templates/index.html"))
-    tmpl["concert.html"].ExecuteTemplate(rw, "base", p)
+    common.Templates = template.Must(template.ParseFiles("templates/concert/viewAll.html", common.LayoutPath))
+    err := common.Templates.ExecuteTemplate(rw, "base", p)
+    common.CheckError(err)
 }
 
 func viewOneHandler(rw http.ResponseWriter, req *http.Request) {
@@ -46,9 +49,9 @@ func viewOneHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "View One Controller: "+id,
     }
 
-    tmpl := make(map[string]*template.Template)
-    tmpl["concert.html"] = template.Must(template.ParseFiles("templates/concert/viewOne.html", "templates/index.html"))
-    tmpl["concert.html"].ExecuteTemplate(rw, "base", p)
+    common.Templates = template.Must(template.ParseFiles("templates/concert/viewOne.html", common.LayoutPath))
+    err := common.Templates.ExecuteTemplate(rw, "base", p)
+    common.CheckError(err)
 }
 
 func editHandler(rw http.ResponseWriter, req *http.Request) {
@@ -65,9 +68,9 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "Edit Controller: "+id,
     }
 
-    tmpl := make(map[string]*template.Template)
-    tmpl["concert.html"] = template.Must(template.ParseFiles("templates/concert/edit.html", "templates/index.html"))
-    tmpl["concert.html"].ExecuteTemplate(rw, "base", p)
+    common.Templates = template.Must(template.ParseFiles("templates/concert/edit.html", common.LayoutPath))
+    err := common.Templates.ExecuteTemplate(rw, "base", p)
+    common.CheckError(err)
 }
 
 func addHandler(rw http.ResponseWriter, req *http.Request) {
@@ -83,7 +86,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
         States:     state.FindAll(),
     }
 
-    tmpl := make(map[string]*template.Template)
-    tmpl["concert.html"] = template.Must(template.ParseFiles("templates/concert/add.html", "templates/index.html"))
-    tmpl["concert.html"].ExecuteTemplate(rw, "base", p)
+    common.Templates = template.Must(template.ParseFiles("templates/concert/add.html", common.LayoutPath))
+    err := common.Templates.ExecuteTemplate(rw, "base", p)
+    common.CheckError(err)
 }

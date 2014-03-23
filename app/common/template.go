@@ -5,4 +5,4 @@ import (
 )
 
 var Templates *template.Template
-const LayoutPath string = "templates/layout.html"
+const LayoutPath string = "templates/index.html"
