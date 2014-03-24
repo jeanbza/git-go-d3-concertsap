@@ -5,12 +5,18 @@ import (
     "git-go-d3-concertsap/app/common"
 )
 
-func FindAll() []db.State {
+type State struct {
+    Id      int64   `db:"id"`
+    Name    string  `db:"name"`
+    Acronym string  `db:"acronym"`
+}
+
+func FindAll() []State {
     // initialize the DbMap
-    dbmap := db.InitDb()
+    dbmap := db.InitDb(State{}, "state")
     defer dbmap.Db.Close()
 
-    var states []db.State
+    var states []State
     _, err := dbmap.Select(&states, "SELECT * FROM state ORDER BY name")
     common.CheckError(err)
 

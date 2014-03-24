@@ -6,7 +6,7 @@ import (
 
     "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/state"
-    "git-go-d3-concertsap/app/database"
+    // "git-go-d3-concertsap/app/database"
 
     "github.com/gorilla/mux"
 )
@@ -77,7 +77,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
-        States      []db.State
+        States      []state.State
     }
 
     p := Page{

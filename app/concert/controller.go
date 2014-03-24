@@ -3,10 +3,12 @@ package concert
 import (
     "net/http"
     "html/template"
+    "log"
+    "strconv"
     
     "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/state"
-    "git-go-d3-concertsap/app/database"
+    // "git-go-d3-concertsap/app/database"
 
     "github.com/gorilla/mux"
 )
@@ -17,6 +19,29 @@ func Route(s *mux.Router) {
     s.HandleFunc("/view/{id:[0-9]+}", viewOneHandler)
     s.HandleFunc("/edit/{id:[0-9]+}", editHandler)
     s.HandleFunc("/add{_:/?}", addHandler)
+    s.HandleFunc("/save{_:/?}", saveHandler).Methods("POST")
+}
+
+func saveHandler(rw http.ResponseWriter, req *http.Request) {
+    err := req.ParseForm()
+    common.CheckError(err)
+    form := req.Form
+
+    stateId, err := strconv.ParseInt(common.IssetInForm(form["state_id"], 0), 10, 64)
+    common.CheckError(err)
+
+    concert := Concert{
+        Name:       common.IssetInForm(form["name"], 0),
+        Address:    common.IssetInForm(form["address"], 0),
+        StateId:    stateId,
+        Website:    common.IssetInForm(form["website"], 0),
+        Start:      common.IssetInForm(form["start"], 0),
+        End:        common.IssetInForm(form["end"], 0),
+    }
+
+    insertConcert(concert)
+
+    http.Redirect(rw, req, "add", http.StatusFound)
 }
 
 func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
@@ -77,7 +102,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
-        States      []db.State
+        States      []state.State
     }
 
     p := Page{

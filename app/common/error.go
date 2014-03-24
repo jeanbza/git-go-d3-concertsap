@@ -15,3 +15,13 @@ func CheckError(err error) {
 func ReportError(err error) {
     fmt.Println("Fatal error caught by common.CheckError: ", err.Error())
 }
+
+func IssetInForm(form []string, index int) string {
+    if len(form) < index+1 {
+        return ""
+    } else {
+        return form[index]
+    }
+    
+    return ""
+}

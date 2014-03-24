@@ -74,14 +74,14 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
 
 func addHandler(rw http.ResponseWriter, req *http.Request) {
     if req.Method == "POST" {
-        dbmap := db.InitDb()
+        dbmap := db.InitDb(State{}, "state")
         defer dbmap.Db.Close()
 
         err := req.ParseForm()
         common.CheckError(err)
         form := req.Form
 
-        err = dbmap.Insert(&db.State{Name: form["name"][0], Acronym: form["acronym"][0]})
+        err = dbmap.Insert(&State{Name: form["name"][0], Acronym: form["acronym"][0]})
         common.CheckError(err)
     }
 

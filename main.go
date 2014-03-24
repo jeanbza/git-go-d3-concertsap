@@ -9,14 +9,11 @@ import (
     "git-go-d3-concertsap/app/band"
     "git-go-d3-concertsap/app/ticket"
     "git-go-d3-concertsap/app/retailer"
-    "git-go-d3-concertsap/app/database"
 
     "github.com/gorilla/mux"
 )
 
 func main() {
-    db.InitDb()
-
     r := mux.NewRouter()
 
     http.Handle("/", r)
