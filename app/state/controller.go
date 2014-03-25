@@ -92,7 +92,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
 
     p := Page{
         PageName:   "state",
-        Title:      "Add Controller",
+        Title:      "Add New Concert",
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/state/add.html", common.LayoutPath))

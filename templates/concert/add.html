@@ -1,8 +1,9 @@
 {{define "body"}}
+    <div class="cs-bottom-pad">
+        <h2 class="cs-inline">{{.Title}}</h2>
+        <a class="cs-float-right" href="/concert/"><button type="button" class="btn btn-primary">View All</button></a>
+    </div>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h2>{{.Title}}</h2>
-        </div>
         <div class="panel-body">
             <form role="form" method="POST" action="save">
                 <input type="hidden" name="database" value="concert"></input>

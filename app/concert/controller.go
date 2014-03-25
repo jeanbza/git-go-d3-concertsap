@@ -47,11 +47,15 @@ func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
+        Concerts    []Concert
     }
+
+    concerts := FindAll()
 
     p := Page{
         PageName:   "concert",
         Title:      "View All Controller",
+        Concerts:   concerts,
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/concert/viewAll.html", common.LayoutPath))

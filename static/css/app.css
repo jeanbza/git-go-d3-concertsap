@@ -10303,6 +10303,30 @@ body .ui-tooltip {
   margin: 0;
 }
 
+.cs-bottom-pad-lt {
+  padding-bottom: 5px;
+}
+
+.cs-bottom-pad {
+  padding-bottom: 10px;
+}
+
+.cs-bottom-pad-lg {
+  padding-bottom: 20px;
+}
+
+.cs-float-right {
+  float: right;
+}
+
+.cs-float-left {
+  float: left;
+}
+
+.cs-inline {
+  display: inline;
+}
+
 .jm-header {
   border-radius: 0;
   background-color: white;

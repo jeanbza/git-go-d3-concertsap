@@ -1,3 +1,32 @@
 {{define "body"}}
-    This is concert/viewAll.html - Concert/{{.Title}}
+    <div class="cs-bottom-pad">
+        <h2 class="cs-inline">{{.Title}}</h2>
+        <a class="cs-float-right" href="add"><button type="button" class="btn btn-primary">Add New Concert</button></a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>StateId</th>
+                <th>Website</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Concerts}}
+                <tr>
+                    <td>{{.Id}}</td>
+                    <td>{{.Name}}</td>
+                    <td>{{.Address}}</td>
+                    <td>{{.StateId}}</td>
+                    <td>{{.Website}}</td>
+                    <td>{{.Start}}</td>
+                    <td>{{.End}}</td>
+                </tr>
+            {{end}}
+        </thead>
+    </table>
 {{end}}

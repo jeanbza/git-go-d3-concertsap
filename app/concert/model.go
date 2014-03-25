@@ -2,6 +2,7 @@ package concert
 
 import (
     "git-go-d3-concertsap/app/database"
+    "git-go-d3-concertsap/app/common"
 )
 
 type Concert struct {
@@ -19,4 +20,15 @@ func insertConcert(concert Concert) {
     defer dbmap.Db.Close()
 
     dbmap.Insert(&concert)
+}
+
+func FindAll() ([]Concert) {
+    dbmap := db.InitDb(Concert{}, "concert")
+    defer dbmap.Db.Close()
+
+    var concerts []Concert
+    _, err := dbmap.Select(&concerts, "SELECT * FROM concert ORDER BY name")
+    common.CheckError(err)
+
+    return concerts
 }
