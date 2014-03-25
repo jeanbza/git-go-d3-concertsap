@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.12, for osx10.6 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.34, for osx10.6 (i386)
 --
 -- Host: localhost    Database: concertsap
 -- ------------------------------------------------------
--- Server version	5.6.12
+-- Server version	5.5.34
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -81,7 +81,7 @@ CREATE TABLE `concert` (
   `start` datetime DEFAULT NULL,
   `end` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `concert` (
 
 LOCK TABLES `concert` WRITE;
 /*!40000 ALTER TABLE `concert` DISABLE KEYS */;
-INSERT INTO `concert` VALUES (1,'coachella',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `concert` VALUES (1,'coachella','boom',1,'bam','2014-03-11 00:00:00','2014-03-20 00:00:00'),(2,'test','123 test street',1,'www.test.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'bam','123 bam street',1,'www.bam.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'test','123 test street',1,'www.test.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'BOOM','123 bam street',1,'www.bam.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'test','123 test street',1,'www.test.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'BOOM','123 bam street',1,'www.bam.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'BAM','',13,'','0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'TEST RIGHT NOW','',13,'','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `concert` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +132,7 @@ CREATE TABLE `state` (
   `acronym` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `state` (`acronym`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +141,7 @@ CREATE TABLE `state` (
 
 LOCK TABLES `state` WRITE;
 /*!40000 ALTER TABLE `state` DISABLE KEYS */;
-INSERT INTO `state` VALUES (1,'North Carolina','NC'),(2,'South Carolina','SC'),(3,'Florida','FL'),(4,'Georgia','GA'),(5,'California','CA');
+INSERT INTO `state` VALUES (1,'North Carolina','NC'),(2,'South Carolina','SC'),(3,'Florida','FL'),(4,'Georgia','GA'),(5,'California','CA'),(11,'Virginia','VA'),(12,'Washington','WA'),(13,'Arizona','AZ'),(14,'Colorado','CO'),(15,'BAM','BA');
 /*!40000 ALTER TABLE `state` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +159,7 @@ CREATE TABLE `ticket_records` (
   `retailer_id` int(11) DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `ticket_records` (
 
 LOCK TABLES `ticket_records` WRITE;
 /*!40000 ALTER TABLE `ticket_records` DISABLE KEYS */;
-INSERT INTO `ticket_records` VALUES (1,420,1,1,'2014-03-11 00:00:00'),(2,470,1,1,'2014-03-12 00:00:00'),(3,495,1,1,'2014-03-13 00:00:00'),(4,450,1,1,'2014-03-11 00:00:00'),(5,505,1,1,'2014-03-11 00:00:00'),(6,535,1,1,'2014-03-11 00:00:00'),(7,505,1,1,'2014-03-12 00:00:00'),(8,535,1,1,'2014-03-12 00:00:00'),(9,450,1,1,'2014-03-13 00:00:00'),(10,505,1,1,'2014-03-13 00:00:00'),(11,535,1,1,'2014-03-13 00:00:00');
+INSERT INTO `ticket_records` VALUES (1,420,1,1,'2014-03-11 00:00:00'),(2,470,1,1,'2014-03-12 00:00:00'),(3,495,1,1,'2014-03-13 00:00:00'),(4,450,1,1,'2014-03-11 00:00:00'),(5,505,1,1,'2014-03-11 00:00:00'),(6,535,1,1,'2014-03-11 00:00:00'),(7,505,1,1,'2014-03-12 00:00:00'),(8,535,1,1,'2014-03-12 00:00:00'),(9,450,1,1,'2014-03-13 00:00:00'),(10,505,1,1,'2014-03-13 00:00:00'),(11,535,1,1,'2014-03-13 00:00:00'),(12,123321,1,1,'2014-03-14 21:07:43'),(13,32,1,1,'2014-03-14 21:32:40'),(14,2323,1,1,'0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `ticket_records` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -181,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-14 15:38:59
+-- Dump completed on 2014-03-24 21:29:55
