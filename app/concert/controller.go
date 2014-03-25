@@ -3,7 +3,6 @@ package concert
 import (
     "net/http"
     "html/template"
-    "log"
     "strconv"
     
     "git-go-d3-concertsap/app/common"

@@ -14,14 +14,6 @@ type Concert struct {
     End     string  `db:"end"`
 }
 
-func PrintAll() {
-    // log.Println("bam")
-
-    // initialize the DbMap
-    // dbmap := db.InitDb()
-    // defer dbmap.Db.Close()
-}
-
 func insertConcert(concert Concert) {
     dbmap := db.InitDb(Concert{}, "concert")
     defer dbmap.Db.Close()
