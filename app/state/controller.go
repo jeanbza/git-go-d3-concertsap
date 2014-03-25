@@ -26,7 +26,7 @@ func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
 
     p := Page{
         PageName:   "state",
-        Title:      "View All Controller",
+        Title:      "View All Concerts",
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/state/viewAll.html", common.LayoutPath))
