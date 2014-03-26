@@ -24,14 +24,13 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="{{if eq .PageName "home"}}active{{end}}"><a href="/">Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
                         <li class="{{if eq .PageName "concert"}}active{{end}}"><a href="/concert/">Concerts</a></li>
                         <li class="{{if eq .PageName "state"}}active{{end}}"><a href="/state/">States</a></li>
                         <li class="{{if eq .PageName "band"}}active{{end}}"><a href="/band/">Bands</a></li>
                         <li class="{{if eq .PageName "ticket"}}active{{end}}"><a href="/ticket/">Tickets</a></li>
                         <li class="{{if eq .PageName "retailer"}}active{{end}}"><a href="/retailer/">Retailers</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a target="_blank" href="https://github.com/jadekler/git-go-d3-concertsap">Site Code</a></li>
                     </ul>
                 </div>
             </nav>
@@ -43,7 +42,7 @@
             <div class="jm-footer-root"></div>
         </div>
         <div class="jm-footer">
-            <small>Created by Jean, Marcus</small>
+            <small>Created by Jean, Marcus<small> <a target="_blank" href="https://github.com/jadekler/git-go-d3-concertsap">Site Code</a>
         </div>
     </body>
 </html>

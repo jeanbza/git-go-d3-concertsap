@@ -1,2 +1,46 @@
 .row
   margin: 0
+
+// from http://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3
+
+.navbar-default
+  background-color: #E74C3C
+  border-color: #E74C3C
+  .navbar-brand
+    color: #BDC3C7
+    &:hover, &:focus
+      color: #ECF0F1
+  .navbar-nav >
+    li > a
+      color: #BDC3C7
+      &:hover, &:focus
+        color: #ECF0F1
+    .active > a
+      color: #ECF0F1
+      background-color: #C0392B
+      &:hover, &:focus
+        color: #ECF0F1
+        background-color: #C0392B
+    .open > a
+      color: #555
+      background-color: #D5D5D5
+      &:hover, &:focus
+        color: #555
+        background-color: #D5D5D5
+    .dropdown > a
+      .caret
+        border-top-color: #777
+        border-bottom-color: #777
+      &:hover .caret, &:focus .caret
+        border-top-color: #333
+        border-bottom-color: #333
+    .open > a
+      .caret, &:hover .caret, &:focus .caret
+        border-top-color: #555
+        border-bottom-color: #555
+  .navbar-toggle
+    border-color: #DDD
+    &:hover, &:focus
+      background-color: #DDD
+    .icon-bar
+      background-color: #CCC
