@@ -1,14 +1,30 @@
 package retailer
 
-// import (
-//     "log"
-//     "git-go-d3-concertsap/app/database"
-// )
+import (
+    "git-go-d3-concertsap/app/database"
+    "git-go-d3-concertsap/app/common"
+)
 
-func PrintAll() {
-    // log.Println("bam")
+type Retailer struct {
+    Id      int64   `db:"id"`
+    Name    string  `db:"name"`
+    Website string  `db:"website"`
+}
 
-    // initialize the DbMap
-    // dbmap := db.InitDb()
-    // defer dbmap.Db.Close()
+func insertRetailer(retailer Retailer) {
+    dbmap := db.InitDb(Retailer{}, "retailer")
+    defer dbmap.Db.Close()
+
+    dbmap.Insert(&retailer)
+}
+
+func FindAll() ([]Retailer) {
+    dbmap := db.InitDb(Retailer{}, "retailer")
+    defer dbmap.Db.Close()
+
+    var retailers []Retailer
+    _, err := dbmap.Select(&retailers, "SELECT * FROM retailer ORDER BY name")
+    common.CheckError(err)
+
+    return retailers
 }

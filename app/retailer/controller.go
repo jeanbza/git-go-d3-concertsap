@@ -5,8 +5,7 @@ import (
     "html/template"
 
     "git-go-d3-concertsap/app/common"
-    "git-go-d3-concertsap/app/state"
-    // "git-go-d3-concertsap/app/database"
+    "git-go-d3-concertsap/app/database"
 
     "github.com/gorilla/mux"
 )
@@ -17,17 +16,37 @@ func Route(s *mux.Router) {
     s.HandleFunc("/view/{id:[0-9]+}", viewOneHandler)
     s.HandleFunc("/edit/{id:[0-9]+}", editHandler)
     s.HandleFunc("/add{_:/?}", addHandler)
+    s.HandleFunc("/save{_:/?}", saveHandler).Methods("POST")
+}
+
+func saveHandler(rw http.ResponseWriter, req *http.Request) {
+    err := req.ParseForm()
+    common.CheckError(err)
+    form := req.Form
+
+    retailer := Retailer{
+        Name:       common.IssetInForm(form["name"], 0),
+        Website:    common.IssetInForm(form["website"], 0),
+    }
+
+    insertRetailer(retailer)
+
+    http.Redirect(rw, req, "add", http.StatusFound)
 }
 
 func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
+        Retailers   []Retailer
     }
+
+    retailers := FindAll()
 
     p := Page{
         PageName:   "retailer",
         Title:      "View All Controller",
+        Retailers:  retailers,
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/retailer/viewAll.html", common.LayoutPath))
@@ -74,16 +93,26 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
 }
 
 func addHandler(rw http.ResponseWriter, req *http.Request) {
+    if req.Method == "POST" {
+        dbmap := db.InitDb(Retailer{}, "retailer")
+        defer dbmap.Db.Close()
+
+        err := req.ParseForm()
+        common.CheckError(err)
+        form := req.Form
+
+        err = dbmap.Insert(&Retailer{Name: form["name"][0], Website: form["website"][0]})
+        common.CheckError(err)
+    }
+
     type Page struct {
         PageName    string
         Title       string
-        States      []state.State
     }
 
     p := Page{
         PageName:   "retailer",
         Title:      "Add Controller",
-        States:     state.FindAll(),
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/retailer/add.html", common.LayoutPath))
