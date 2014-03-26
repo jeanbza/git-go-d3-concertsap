@@ -3,6 +3,7 @@ package state
 import (
     "net/http"
     "html/template"
+    //"strconv"
     
     "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/database"
@@ -16,17 +17,40 @@ func Route(s *mux.Router) {
     s.HandleFunc("/view/{id:[0-9]+}", viewOneHandler)
     s.HandleFunc("/edit/{id:[0-9]+}", editHandler)
     s.HandleFunc("/add{_:/?}", addHandler)
+    s.HandleFunc("/save{_:/?}", saveHandler).Methods("POST")
+}
+
+func saveHandler(rw http.ResponseWriter, req *http.Request) {
+    err := req.ParseForm()
+    common.CheckError(err)
+    form := req.Form
+
+    //stateId, err := strconv.ParseInt(common.IssetInForm(form["state_id"], 0), 10, 64)
+    //common.CheckError(err)
+
+    state := State{
+        Name:       common.IssetInForm(form["name"], 0),
+        Acronym:    common.IssetInForm(form["acronym"], 0),
+    }
+
+    insertState(state)
+
+    http.Redirect(rw, req, "add", http.StatusFound)
 }
 
 func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
+        States      []State
     }
+
+    states := FindAll()
 
     p := Page{
         PageName:   "state",
         Title:      "View All Concerts",
+        States:     states,
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/state/viewAll.html", common.LayoutPath))

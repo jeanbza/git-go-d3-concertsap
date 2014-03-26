@@ -26,3 +26,10 @@ func FindAll() []State {
 
     return states
 }
+
+func insertState (state State) {
+    dbmap := db.InitDb(State{}, "state")
+    defer dbmap.Db.Close()
+
+    dbmap.Insert(&state) 
+}

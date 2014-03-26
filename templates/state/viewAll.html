@@ -1,3 +1,24 @@
 {{define "body"}}
-    This is state/viewAll.html - Start/{{.Title}}
+    <div class="cs-bottom-pad">
+        <h2 class="cs-inline">{{.Title}}</h2>
+        <a class="cs-float-right" href="add"><button type="button" class="btn btn-primary">Add New State</button></a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Acronym</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .States}}
+                <tr>
+                    <td>{{.Id}}</td>
+                    <td>{{.Name}}</td>
+                    <td>{{.Acronym}}</td>
+                </tr>
+            {{end}}
+        </thead>
+    </table>
 {{end}}
