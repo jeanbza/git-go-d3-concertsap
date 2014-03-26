@@ -5,6 +5,7 @@ import (
     "html/template"
 
     "git-go-d3-concertsap/app/common"
+    "git-go-d3-concertsap/app/database"
 
     "github.com/gorilla/mux"
 )
@@ -15,17 +16,37 @@ func Route(s *mux.Router) {
     s.HandleFunc("/view/{id:[0-9]+}", viewOneHandler)
     s.HandleFunc("/edit/{id:[0-9]+}", editHandler)
     s.HandleFunc("/add{_:/?}", addHandler)
+    s.HandleFunc("/save{_:/?}", saveHandler).Methods("POST")
+}
+
+func saveHandler(rw http.ResponseWriter, req *http.Request) {
+    err := req.ParseForm()
+    common.CheckError(err)
+    form := req.Form
+
+    band := Band{
+        Name:       common.IssetInForm(form["name"], 0),
+        Website:    common.IssetInForm(form["website"], 0),
+    }
+
+    insertBand(band)
+
+    http.Redirect(rw, req, "add", http.StatusFound)
 }
 
 func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
+        Bands       []Band
     }
+
+    bands := FindAll()
 
     p := Page{
         PageName:   "band",
         Title:      "View All Controller",
+        Bands:      bands,
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/band/viewAll.html", common.LayoutPath))
@@ -72,6 +93,18 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
 }
 
 func addHandler(rw http.ResponseWriter, req *http.Request) {
+    if req.Method == "POST" {
+        dbmap := db.InitDb(Band{}, "band")
+        defer dbmap.Db.Close()
+
+        err := req.ParseForm()
+        common.CheckError(err)
+        form := req.Form
+
+        err = dbmap.Insert(&Band{Name: form["name"][0], Website: form["website"][0]})
+        common.CheckError(err)
+    }
+
     type Page struct {
         PageName    string
         Title       string

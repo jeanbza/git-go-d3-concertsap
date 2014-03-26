@@ -1,13 +1,30 @@
 package band
 
-// import (
-//     "git-go-d3-concertsap/app/database"
-// )
+import (
+    "git-go-d3-concertsap/app/database"
+    "git-go-d3-concertsap/app/common"
+)
 
-func PrintAll() {
-    // log.Println("bam")
+type Band struct {
+    Id      int64   `db:"id"`
+    Name    string  `db:"name"`
+    Website string  `db:"website"`
+}
 
-    // initialize the DbMap
-    // dbmap := db.InitDb()
-    // defer dbmap.Db.Close()
+func insertBand(band Band) {
+    dbmap := db.InitDb(Band{}, "band")
+    defer dbmap.Db.Close()
+
+    dbmap.Insert(&band)
+}
+
+func FindAll() ([]Band) {
+    dbmap := db.InitDb(Band{}, "band")
+    defer dbmap.Db.Close()
+
+    var bands []Band
+    _, err := dbmap.Select(&bands, "SELECT * FROM band ORDER BY name")
+    common.CheckError(err)
+
+    return bands
 }
