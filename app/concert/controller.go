@@ -54,7 +54,7 @@ func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
 
     p := Page{
         PageName:   "concert",
-        Title:      "View All Controller",
+        Title:      "View All Concerts",
         Concerts:   concerts,
     }
 
