@@ -1,13 +1,35 @@
 @import "ui_patterns/bootstrap_overrides"
 
+$space-small: 5px
+$space-normal: $space-small * 2
+$space-large: $space-normal * 2
+
 .cs-bottom-pad-lt
-  padding-bottom: 5px
+  padding-bottom: $space-small
 
 .cs-bottom-pad
-  padding-bottom: 10px
+  padding-bottom: $space-normal
 
 .cs-bottom-pad-lg
-  padding-bottom: 20px
+  padding-bottom: $space-large
+
+.cs-right-pad-lt
+  padding-right: $space-small
+
+.cs-right-pad
+  padding-right: $space-normal
+
+.cs-right-pad-lg
+  padding-right: $space-large
+
+.cs-right-margin-lt
+  margin-right: $space-small
+
+.cs-right-margin
+  margin-right: $space-normal
+
+.cs-right-margin-lg
+  margin-right: $space-large
 
 .cs-float-right
   float: right

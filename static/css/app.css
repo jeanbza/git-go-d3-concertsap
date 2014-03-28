@@ -10369,6 +10369,30 @@ body .ui-tooltip {
   padding-bottom: 20px;
 }
 
+.cs-right-pad-lt {
+  padding-right: 5px;
+}
+
+.cs-right-pad {
+  padding-right: 10px;
+}
+
+.cs-right-pad-lg {
+  padding-right: 20px;
+}
+
+.cs-right-margin-lt {
+  margin-right: 5px;
+}
+
+.cs-right-margin {
+  margin-right: 10px;
+}
+
+.cs-right-margin-lg {
+  margin-right: 20px;
+}
+
 .cs-float-right {
   float: right;
 }
