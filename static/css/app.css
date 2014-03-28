@@ -10473,6 +10473,11 @@ html, body {
   border-top: 1px solid #e7e7e7;
 }
 
+.cs-add-band-to-concert .cs-parser-display .cs-parse-display-box {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
 .jm-standard-layout {
   padding: 0;
   width: 100%;
