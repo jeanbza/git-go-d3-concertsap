@@ -23,10 +23,16 @@ require.config({
 
 require([
     'jquery',
-    'bootstrap'
+    'bootstrap',
+    'modules/parser'
 ], 
 function ($) {
     $(document).ready(function() {
         $('.dropdown-toggle').dropdown();
+
+        $(".cs-js-parse-input").parser({
+            elemDisplay: $(".cs-js-parse-display"),
+            elemOutput: $(".cs-js-parse-output"),
+        });
     });
 });

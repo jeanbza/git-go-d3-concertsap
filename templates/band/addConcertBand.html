@@ -17,13 +17,15 @@
                     <div class="col-md-6 cs-no-pad">
                         <div class="form-group">
                             <label for="price">Bands</label> <small>(just dump 'em in!)</small>
-                            <textarea class="form-control" rows="10"></textarea>
+                            <textarea class="form-control cs-js-parse-input" rows="10"></textarea>
                         </div>
+                        <input type="hidden" name="parsedInput" class="cs-js-parse-output"></input>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </div>
                     <div class="col-md-6 cs-no-pad">
                         <div class="form-group">
                             <label for="price">To be inserted</label>
+                            <div class="cs-js-parse-display"></div>
                         </div>
                     </div>
                 </div>
