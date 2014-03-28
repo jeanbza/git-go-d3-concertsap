@@ -1,0 +1,24 @@
+{{define "body"}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>{{.Title}}</h2>
+        </div>
+        <div class="panel-body">
+            <form role="form" method="POST" action="save">
+                <div class="form-group">
+                    <label for="retailerID">Concert</label>
+                    <select class="form-control" name="concert_id">
+                        {{range .Concerts}}
+                            <option value="{{.Id}}">{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="price">Bands</label> <small>(just dump 'em in!)</small>
+                    <textarea class="form-control" rows="10"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+{{end}}
