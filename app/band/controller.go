@@ -20,16 +20,15 @@ func Route(s *mux.Router) {
 }
 
 func saveHandler(rw http.ResponseWriter, req *http.Request) {
+    dbmap := db.InitDb(Band{}, "band")
+    defer dbmap.Db.Close()
+
     err := req.ParseForm()
     common.CheckError(err)
     form := req.Form
 
-    band := Band{
-        Name:       common.IssetInForm(form["name"], 0),
-        Website:    common.IssetInForm(form["website"], 0),
-    }
-
-    insertBand(band)
+    err = dbmap.Insert(&Band{Name: form["name"][0], Website: form["website"][0]})
+    common.CheckError(err)
 
     http.Redirect(rw, req, "add", http.StatusFound)
 }
@@ -93,18 +92,22 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
 }
 
 func addHandler(rw http.ResponseWriter, req *http.Request) {
-    if req.Method == "POST" {
-        dbmap := db.InitDb(Band{}, "band")
-        defer dbmap.Db.Close()
-
-        err := req.ParseForm()
-        common.CheckError(err)
-        form := req.Form
-
-        err = dbmap.Insert(&Band{Name: form["name"][0], Website: form["website"][0]})
-        common.CheckError(err)
+    type Page struct {
+        PageName    string
+        Title       string
     }
 
+    p := Page{
+        PageName:   "band",
+        Title:      "Add Controller",
+    }
+
+    common.Templates = template.Must(template.ParseFiles("templates/band/add.html", common.LayoutPath))
+    err := common.Templates.ExecuteTemplate(rw, "base", p)
+    common.CheckError(err)
+}
+
+func addConcertBandHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
