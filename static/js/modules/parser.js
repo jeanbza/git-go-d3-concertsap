@@ -14,6 +14,7 @@ define(['jquery', 'jqueryui'], function ($) {
                 });
 
                 self.options.elemDisplay.html(parsedString);
+                self.options.elemOutput.val(parsedString);
             });
         },
 

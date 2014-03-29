@@ -7,7 +7,6 @@ import (
     
     "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/state"
-    // "git-go-d3-concertsap/app/database"
 
     "github.com/gorilla/mux"
 )

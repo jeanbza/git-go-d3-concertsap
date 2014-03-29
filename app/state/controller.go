@@ -25,9 +25,6 @@ func saveHandler(rw http.ResponseWriter, req *http.Request) {
     common.CheckError(err)
     form := req.Form
 
-    //stateId, err := strconv.ParseInt(common.IssetInForm(form["state_id"], 0), 10, 64)
-    //common.CheckError(err)
-
     state := State{
         Name:       common.IssetInForm(form["name"], 0),
         Acronym:    common.IssetInForm(form["acronym"], 0),

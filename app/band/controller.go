@@ -3,6 +3,8 @@ package band
 import (
     "net/http"
     "html/template"
+    "regexp"
+    "strconv"
 
     "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/database"
@@ -17,8 +19,9 @@ func Route(s *mux.Router) {
     s.HandleFunc("/view/{id:[0-9]+}", viewOneHandler)
     s.HandleFunc("/edit/{id:[0-9]+}", editHandler)
     s.HandleFunc("/add{_:/?}", addHandler)
-    s.HandleFunc("/addConcertBand{_:/?}", addConcertBandHandler)
+    s.HandleFunc("/addBandsToConcert{_:/?}", addBandsToConcertHandler)
     s.HandleFunc("/save{_:/?}", saveHandler).Methods("POST")
+    s.HandleFunc("/saveBandsToConcert{_:/?}", saveBandsToConcertHandler).Methods("POST")
 }
 
 func saveHandler(rw http.ResponseWriter, req *http.Request) {
@@ -29,10 +32,42 @@ func saveHandler(rw http.ResponseWriter, req *http.Request) {
     common.CheckError(err)
     form := req.Form
 
-    err = dbmap.Insert(&Band{Name: form["name"][0], Website: form["website"][0]})
-    common.CheckError(err)
+    newBand := Band{Name: form["name"][0], Website: form["website"][0]}
+    insertBand(newBand)
 
     http.Redirect(rw, req, "add", http.StatusFound)
+}
+
+func saveBandsToConcertHandler(rw http.ResponseWriter, req *http.Request) {
+    dbmap := db.InitDb(Band{}, "band")
+    defer dbmap.Db.Close()
+
+    err := req.ParseForm()
+    common.CheckError(err)
+    form := req.Form
+
+    concertId, err := strconv.ParseInt(form["concert_id"][0], 10, 64)
+    common.CheckError(err)
+
+    r, err := regexp.Compile(`([^<]+)<br>`)
+    common.CheckError(err)
+    rawBands := form["parsedInput"][0]
+    bandMatches := r.FindAllStringSubmatch(rawBands, -1)
+    
+    for _,bandName := range bandMatches {
+        newBand := Band{Name: bandName[1]}
+        err = dbmap.SelectOne(&newBand, "SELECT * FROM concertsap.band WHERE name=?", newBand.Name)
+
+        if err != nil {
+            insertBand(newBand)
+            err = dbmap.SelectOne(&newBand, "SELECT * FROM concertsap.band WHERE name=?", newBand.Name)
+        }
+
+        newBandConcert := BandConcert{BandId: newBand.Id, ConcertId: concertId}
+        insertBandConcert(newBandConcert)
+    }
+
+    http.Redirect(rw, req, "addBandsToConcert", http.StatusFound)   
 }
 
 func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
@@ -109,7 +144,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
     common.CheckError(err)
 }
 
-func addConcertBandHandler(rw http.ResponseWriter, req *http.Request) {
+func addBandsToConcertHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
@@ -124,7 +159,7 @@ func addConcertBandHandler(rw http.ResponseWriter, req *http.Request) {
         Concerts:   concerts,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/addConcertBand.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/band/addBandsToConcert.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
