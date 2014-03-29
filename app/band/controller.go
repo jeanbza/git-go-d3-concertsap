@@ -5,6 +5,7 @@ import (
     "html/template"
     "regexp"
     "strconv"
+    "strings"
 
     "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/database"
@@ -32,7 +33,7 @@ func saveHandler(rw http.ResponseWriter, req *http.Request) {
     common.CheckError(err)
     form := req.Form
 
-    newBand := Band{Name: form["name"][0], Website: form["website"][0]}
+    newBand := Band{Name: strings.ToUpper(form["name"][0]), Website: form["website"][0]}
     insertBand(newBand)
 
     http.Redirect(rw, req, "add", http.StatusFound)
@@ -56,7 +57,7 @@ func saveBandsToConcertHandler(rw http.ResponseWriter, req *http.Request) {
     
     for _,bandName := range bandMatches {
         newBand := Band{Name: bandName[1]}
-        err = dbmap.SelectOne(&newBand, "SELECT * FROM concertsap.band WHERE name=?", newBand.Name)
+        err = dbmap.SelectOne(&newBand, "SELECT * FROM concertsap.band WHERE name=?", strings.ToUpper(newBand.Name))
 
         if err != nil {
             insertBand(newBand)
