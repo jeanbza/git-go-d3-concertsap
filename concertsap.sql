@@ -27,7 +27,7 @@ CREATE TABLE `band` (
   `name` varchar(25555) DEFAULT NULL,
   `website` varchar(2555) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +36,7 @@ CREATE TABLE `band` (
 
 LOCK TABLES `band` WRITE;
 /*!40000 ALTER TABLE `band` DISABLE KEYS */;
+INSERT INTO `band` VALUES (1,'Red Hot Chilli Peppers','boom.com'),(2,'Marcus Band','marcus.com'),(3,'TEST','bam'),(4,'yo yo','test');
 /*!40000 ALTER TABLE `band` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,9 +51,8 @@ CREATE TABLE `band_concert` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `band_id` int(11) DEFAULT NULL,
   `concert_id` int(11) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `time` time DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `band_concert` (`band_id`,`concert_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -63,6 +63,33 @@ CREATE TABLE `band_concert` (
 LOCK TABLES `band_concert` WRITE;
 /*!40000 ALTER TABLE `band_concert` DISABLE KEYS */;
 /*!40000 ALTER TABLE `band_concert` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `band_concert_record`
+--
+
+DROP TABLE IF EXISTS `band_concert_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `band_concert_record` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `band_id` int(11) DEFAULT NULL,
+  `concert_id` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `band_concert_date_time` (`band_id`,`concert_id`,`date`,`time`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `band_concert_record`
+--
+
+LOCK TABLES `band_concert_record` WRITE;
+/*!40000 ALTER TABLE `band_concert_record` DISABLE KEYS */;
+/*!40000 ALTER TABLE `band_concert_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -146,13 +173,13 @@ INSERT INTO `state` VALUES (1,'North Carolina','NC'),(2,'South Carolina','SC'),(
 UNLOCK TABLES;
 
 --
--- Table structure for table `ticket_records`
+-- Table structure for table `ticket_record`
 --
 
-DROP TABLE IF EXISTS `ticket_records`;
+DROP TABLE IF EXISTS `ticket_record`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ticket_records` (
+CREATE TABLE `ticket_record` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `price` double DEFAULT NULL,
   `concert_id` int(11) DEFAULT NULL,
@@ -163,13 +190,13 @@ CREATE TABLE `ticket_records` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ticket_records`
+-- Dumping data for table `ticket_record`
 --
 
-LOCK TABLES `ticket_records` WRITE;
-/*!40000 ALTER TABLE `ticket_records` DISABLE KEYS */;
-INSERT INTO `ticket_records` VALUES (1,420,1,1,'2014-03-11 00:00:00'),(2,470,1,1,'2014-03-12 00:00:00'),(3,495,1,1,'2014-03-13 00:00:00'),(4,450,1,1,'2014-03-11 00:00:00'),(5,505,1,1,'2014-03-11 00:00:00'),(6,535,1,1,'2014-03-11 00:00:00'),(7,505,1,1,'2014-03-12 00:00:00'),(8,535,1,1,'2014-03-12 00:00:00'),(9,450,1,1,'2014-03-13 00:00:00'),(10,505,1,1,'2014-03-13 00:00:00'),(11,535,1,1,'2014-03-13 00:00:00'),(12,123321,1,1,'2014-03-14 21:07:43'),(13,32,1,1,'2014-03-14 21:32:40'),(14,2323,1,1,'0000-00-00 00:00:00');
-/*!40000 ALTER TABLE `ticket_records` ENABLE KEYS */;
+LOCK TABLES `ticket_record` WRITE;
+/*!40000 ALTER TABLE `ticket_record` DISABLE KEYS */;
+INSERT INTO `ticket_record` VALUES (1,420,1,1,'2014-03-11 00:00:00'),(2,470,1,1,'2014-03-12 00:00:00'),(3,495,1,1,'2014-03-13 00:00:00'),(4,450,1,1,'2014-03-11 00:00:00'),(5,505,1,1,'2014-03-11 00:00:00'),(6,535,1,1,'2014-03-11 00:00:00'),(7,505,1,1,'2014-03-12 00:00:00'),(8,535,1,1,'2014-03-12 00:00:00'),(9,450,1,1,'2014-03-13 00:00:00'),(10,505,1,1,'2014-03-13 00:00:00'),(11,535,1,1,'2014-03-13 00:00:00'),(12,123321,1,1,'2014-03-14 21:07:43'),(13,32,1,1,'2014-03-14 21:32:40'),(14,2323,1,1,'0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `ticket_record` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -181,4 +208,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-24 21:29:55
+-- Dump completed on 2014-03-29 10:00:20
