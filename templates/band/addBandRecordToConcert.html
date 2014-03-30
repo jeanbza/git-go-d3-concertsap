@@ -1,29 +1,32 @@
 {{define "body"}}
-    <div class="panel panel-default cs-add-band-to-concert">
+    <div class="panel panel-default cs-add-band-record-to-concert">
         <div class="panel-heading">
             <h2>{{.Title}}</h2>
         </div>
         <div class="panel-body">
             <form role="form" method="POST" action="saveBandRecordToConcert">
                 <div class="form-group">
-                    <label for="price">Name</label>
+                    <label>Name</label>
                     <input type="text" class="form-control" name="name" placeholder="Artist/Group Name">
                 </div>
                 <div class="form-group">
-                    <label for="retailerID">Concert</label>
+                    <label>Concert</label>
                     <select class="form-control" name="concert_id">
                         {{range .Concerts}}
                             <option value="{{.Id}}">{{.Name}}</option>
                         {{end}}
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="price">Date</label>
-                    <input type="text" class="form-control" name="date" placeholder="2014-08-25">
-                </div>
-                <div class="form-group">
-                    <label for="price">Time</label>
-                    <input type="text" class="form-control" name="time" placeholder="14:30">
+                <div class='col-sm-3 cs-no-float cs-datepicker-area'>
+                    <label>Date and time they're playing</label>
+                    <div class='input-group date cs-js-datetimepicker' data-date-format="YYYY-MM-DD hh:mm:ss">
+                        <input type="hidden" class="cs-js-date" name="date"/>
+                        <input type="hidden" class="cs-js-time" name="time"/>
+                        <input type='text' class="form-control" name="datetime" disabled/>
+                        <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
