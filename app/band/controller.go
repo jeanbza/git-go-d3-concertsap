@@ -102,10 +102,8 @@ func saveBandRecordToConcertHandler(rw http.ResponseWriter, req *http.Request) {
         err = dbmap.SelectOne(&bandConcert, "SELECT * FROM concertsap.concert_band WHERE band_id=? AND concert_id=?", bandConcert.BandId, bandConcert.ConcertId)
     }
 
-    formDate, err := strconv.ParseInt(form["date"][0], 10, 64)
-    common.CheckError(err)
-    formTime, err := strconv.ParseInt(form["time"][0], 10, 64)
-    common.CheckError(err)
+    formDate := form["date"][0]
+    formTime := form["time"][0]
     bandConcertRecord := BandConcertRecord{BandId: bandConcert.BandId, ConcertId: bandConcert.ConcertId, Date: formDate, Time: formTime}
     insertBandConcertRecord(bandConcertRecord)
 

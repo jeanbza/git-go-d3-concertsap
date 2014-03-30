@@ -8,8 +8,8 @@ type BandConcertRecord struct {
     Id          int64   `db:"id"`
     BandId      int64   `db:"band_id"`
     ConcertId   int64   `db:"concert_id"`
-    Date        int64   `db:"date"`
-    Time        int64   `db:"time"`
+    Date        string  `db:"date"`
+    Time        string  `db:"time"`
 }
 
 func insertBandConcertRecord(bandConcertRecord BandConcertRecord) {
