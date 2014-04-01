@@ -1,3 +1,44 @@
 {{define "body"}}
-    This is ticket/add.html - Ticket/{{.Title}}
+    <div class="panel panel-default cs-js-add-ticket">
+        <div class="panel-heading">
+            <h2>{{.Title}}</h2>
+        </div>
+        <div class="panel-body">
+            <form role="form" method="POST" action="save">
+                <div class="form-group">
+                    <label>Price</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" class="form-control" placeholder="12.34" name="price">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Concert</label>
+                    <select class="form-control" name="concert_id">
+                        {{range .Concerts}}
+                            <option value="{{.Id}}">{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Retailer</label>
+                    <select class="form-control" name="retailer_id">
+                        {{range .Retailers}}
+                            <option value="{{.Id}}">{{.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class='form-group cs-datepicker-area'>
+                    <label>Date and time of this price</label>
+                    <div class='input-group date cs-js-datetimepicker' data-date-format="YYYY-MM-DD hh:mm:ss">
+                        <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                        <input type='text' class="form-control" name="datetime" value="{{.Now}}" disabled/>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
 {{end}}

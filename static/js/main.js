@@ -35,7 +35,7 @@ function ($) {
     $(document).ready(function() {
         $('.dropdown-toggle').dropdown();
 
-        $('.cs-js-datetimepicker').datetimepicker({
+        $('.cs-js-add-band-record-to-concert .cs-js-datetimepicker').datetimepicker({
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",
@@ -45,7 +45,16 @@ function ($) {
         }).on("dp.change",function (e) {
             $("input.cs-js-date").val($(this).data("DateTimePicker").getDate().format("YYYY-MM-DD"));
             $("input.cs-js-time").val($(this).data("DateTimePicker").getDate().format("hh:mm:ss"));
-        });;
+        });
+
+        $('.cs-js-add-ticket .cs-js-datetimepicker').datetimepicker({
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-arrow-up",
+                down: "fa fa-arrow-down"
+            }
+        });
 
         $(".cs-js-parse-input").parser({
             elemDisplay: $(".cs-js-parse-display"),

@@ -6,7 +6,7 @@
         <div class="panel-body">
             <form role="form" method="POST" action="saveBandsToConcert">
                 <div class="form-group">
-                    <label for="retailerID">Concert</label>
+                    <label>Concert</label>
                     <select class="form-control" name="concert_id">
                         {{range .Concerts}}
                             <option value="{{.Id}}">{{.Name}}</option>
@@ -16,7 +16,7 @@
                 <div class="container cs-no-margin cs-no-pad cs-full-width">
                     <div class="col-md-6 cs-no-pad cs-parser-input">
                         <div class="form-group">
-                            <label for="price">Bands</label> <small>(just dump 'em in!)</small>
+                            <label>Bands</label> <small>(just dump 'em in!)</small>
                             <textarea class="form-control cs-js-parse-input" rows="10"></textarea>
                         </div>
                         <input type="hidden" name="parsedInput" class="cs-js-parse-output"></input>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-6 cs-parser-display">
                         <div class="form-group">
-                            <label for="display">To be inserted</label>
+                            <label>To be inserted</label>
                             <div class="cs-js-parse-display cs-parse-display-box"></div>
                         </div>
                     </div>
