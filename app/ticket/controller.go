@@ -15,6 +15,7 @@ import (
 func Route(s *mux.Router) {
     s.HandleFunc("/", addHandler)
     s.HandleFunc("/add{_:/?}", addHandler)
+    s.HandleFunc("/save{_:/?}", saveHandler).Methods("POST")
 }
 
 func addHandler(rw http.ResponseWriter, req *http.Request) {
@@ -41,4 +42,21 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
     common.Templates = template.Must(template.ParseFiles("templates/ticket/add.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
+}
+
+func saveHandler(rw http.ResponseWriter, req *http.Request) {
+    err := req.ParseForm()
+    common.CheckError(err)
+    form := req.Form
+
+    ticket := Ticket{
+        Price:      common.IssetInForm(form["price"], 0),
+        ConcertId:  common.IssetInForm(form["concert_id"], 0),
+        RetailerId: common.IssetInForm(form["retailer_id"], 0),
+        Timestamp:  common.IssetInForm(form["datetime"], 0),
+    }
+
+    insertTicket(ticket)
+
+    http.Redirect(rw, req, "add", http.StatusFound)
 }
