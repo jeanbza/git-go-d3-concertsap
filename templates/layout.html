@@ -26,11 +26,13 @@
                         <li class="{{if eq .PageName "home"}}active{{end}}"><a href="/">Home</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="{{if eq .PageName "concert"}}active{{end}}"><a href="/admin/concert/">Concerts</a></li>
-                        <li class="{{if eq .PageName "state"}}active{{end}}"><a href="/admin/state/">States</a></li>
-                        <li class="{{if eq .PageName "band"}}active{{end}}"><a href="/admin/band/">Bands</a></li>
-                        <li class="{{if eq .PageName "ticket"}}active{{end}}"><a href="/admin/ticket/">Tickets</a></li>
-                        <li class="{{if eq .PageName "retailer"}}active{{end}}"><a href="/admin/retailer/">Retailers</a></li>
+                        <li class="{{if eq .PageName "user_concert"}}active{{end}}"><a href="/concert/">User Concerts</a></li>
+                        <li class="{{if eq .PageName "user_band"}}active{{end}}"><a href="/band/">User Bands</a></li>
+                        <li class="{{if eq .PageName "admin_concert"}}active{{end}}"><a href="/admin/concert/">Admin Concerts</a></li>
+                        <li class="{{if eq .PageName "state"}}active{{end}}"><a href="/admin/state/">Admin States</a></li>
+                        <li class="{{if eq .PageName "admin_band"}}active{{end}}"><a href="/admin/band/">Admin Bands</a></li>
+                        <li class="{{if eq .PageName "ticket"}}active{{end}}"><a href="/admin/ticket/">Admin Tickets</a></li>
+                        <li class="{{if eq .PageName "retailer"}}active{{end}}"><a href="/admin/retailer/">Admin Retailers</a></li>
                     </ul>
                 </div>
             </nav>
