@@ -20,7 +20,7 @@ func loginHandler(rw http.ResponseWriter, req *http.Request) {
         PageName    string
         Title       string
     }
-    
+
     p := Page{
         PageName:   "login",
         Title:      "Login",
@@ -35,5 +35,5 @@ func validateHandler(rw http.ResponseWriter, req *http.Request) {
 
     log.Println("validate!")
 
-    http.Redirect(rw, req, "/login", http.StatusFound)
+    http.Redirect(rw, req, "/login/", http.StatusFound)
 }
