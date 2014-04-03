@@ -11,7 +11,7 @@ import (
     "github.com/gorilla/mux"
 )
 
-func Route(s *mux.Router) {
+func RouteAdmin(s *mux.Router) {
     s.HandleFunc("/", viewAllHandler)
     s.HandleFunc("/{id:[0-9]+}{_:/?}", viewOneHandler)
     s.HandleFunc("/view/{id:[0-9]+}", viewOneHandler)

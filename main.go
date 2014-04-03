@@ -21,24 +21,24 @@ func main() {
     r.HandleFunc("/", HandleHome).Methods("GET")
 
     // Admin Concert
-    s := r.PathPrefix("/concert").Subrouter()
-    concert.Route(s)
+    s := r.PathPrefix("/admin/concert").Subrouter()
+    concert.RouteAdmin(s)
+
+    // Admin Band
+    s = r.PathPrefix("/admin/band").Subrouter()
+    band.RouteAdmin(s)
+
+    // Admin Ticket
+    s = r.PathPrefix("/admin/ticket").Subrouter()
+    ticket.RouteAdmin(s)
 
     // Admin Retailer
-    s = r.PathPrefix("/retailer").Subrouter()
+    s = r.PathPrefix("/admin/retailer").Subrouter()
     retailer.Route(s)
 
     // Admin State
-    s = r.PathPrefix("/state").Subrouter()
+    s = r.PathPrefix("/admin/state").Subrouter()
     state.Route(s)
-
-    // Admin Band
-    s = r.PathPrefix("/band").Subrouter()
-    band.Route(s)
-
-    // Admin Ticket
-    s = r.PathPrefix("/ticket").Subrouter()
-    ticket.Route(s)
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
     http.Handle("/static/", fileServer)

@@ -14,10 +14,10 @@ import (
     "github.com/gorilla/mux"
 )
 
-func Route(s *mux.Router) {
-    s.HandleFunc("/", viewAllHandler)
-    s.HandleFunc("/{id:[0-9]+}{_:/?}", viewOneHandler)
-    s.HandleFunc("/view/{id:[0-9]+}", viewOneHandler)
+func RouteAdmin(s *mux.Router) {
+    s.HandleFunc("/", adminViewAllHandler)
+    s.HandleFunc("/{id:[0-9]+}{_:/?}", adminViewOneHandler)
+    s.HandleFunc("/view/{id:[0-9]+}", adminViewOneHandler)
     s.HandleFunc("/edit/{id:[0-9]+}", editHandler)
     s.HandleFunc("/add{_:/?}", addHandler)
     s.HandleFunc("/addBandsToConcert{_:/?}", addBandsToConcertHandler)
@@ -25,6 +25,45 @@ func Route(s *mux.Router) {
     s.HandleFunc("/save{_:/?}", saveHandler).Methods("POST")
     s.HandleFunc("/saveBandsToConcert{_:/?}", saveBandsToConcertHandler).Methods("POST")
     s.HandleFunc("/saveBandRecordToConcert{_:/?}", saveBandRecordToConcertHandler).Methods("POST")
+}
+
+func adminViewAllHandler(rw http.ResponseWriter, req *http.Request) {
+    type Page struct {
+        PageName    string
+        Title       string
+        Bands       []Band
+    }
+
+    bands := FindAll()
+
+    p := Page{
+        PageName:   "band",
+        Title:      "View All Bands",
+        Bands:      bands,
+    }
+
+    common.Templates = template.Must(template.ParseFiles("templates/band/viewAll.html", common.LayoutPath))
+    err := common.Templates.ExecuteTemplate(rw, "base", p)
+    common.CheckError(err)
+}
+
+func adminViewOneHandler(rw http.ResponseWriter, req *http.Request) {
+    params := mux.Vars(req)
+    id := params["id"]
+
+    type Page struct {
+        PageName    string
+        Title       string
+    }
+
+    p := Page{
+        PageName:   "band",
+        Title:      "View One Controller: "+id,
+    }
+
+    common.Templates = template.Must(template.ParseFiles("templates/band/viewOne.html", common.LayoutPath))
+    err := common.Templates.ExecuteTemplate(rw, "base", p)
+    common.CheckError(err)
 }
 
 func saveHandler(rw http.ResponseWriter, req *http.Request) {
@@ -108,45 +147,6 @@ func saveBandRecordToConcertHandler(rw http.ResponseWriter, req *http.Request) {
     insertBandConcertRecord(bandConcertRecord)
 
     http.Redirect(rw, req, "addBandRecordToConcert", http.StatusFound)   
-}
-
-func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
-    type Page struct {
-        PageName    string
-        Title       string
-        Bands       []Band
-    }
-
-    bands := FindAll()
-
-    p := Page{
-        PageName:   "band",
-        Title:      "View All Bands",
-        Bands:      bands,
-    }
-
-    common.Templates = template.Must(template.ParseFiles("templates/band/viewAll.html", common.LayoutPath))
-    err := common.Templates.ExecuteTemplate(rw, "base", p)
-    common.CheckError(err)
-}
-
-func viewOneHandler(rw http.ResponseWriter, req *http.Request) {
-    params := mux.Vars(req)
-    id := params["id"]
-
-    type Page struct {
-        PageName    string
-        Title       string
-    }
-
-    p := Page{
-        PageName:   "band",
-        Title:      "View One Controller: "+id,
-    }
-
-    common.Templates = template.Must(template.ParseFiles("templates/band/viewOne.html", common.LayoutPath))
-    err := common.Templates.ExecuteTemplate(rw, "base", p)
-    common.CheckError(err)
 }
 
 func editHandler(rw http.ResponseWriter, req *http.Request) {
