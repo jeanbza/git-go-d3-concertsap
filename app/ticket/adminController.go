@@ -12,7 +12,7 @@ import (
     "github.com/gorilla/mux"
 )
 
-func Route(s *mux.Router) {
+func RouteAdmin(s *mux.Router) {
     s.HandleFunc("/", addHandler)
     s.HandleFunc("/add{_:/?}", addHandler)
     s.HandleFunc("/save{_:/?}", saveHandler).Methods("POST")
