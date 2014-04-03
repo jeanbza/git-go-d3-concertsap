@@ -6,7 +6,8 @@ require.config({
         'jqueryui': 'external/jquery-ui/jquery-ui-1.10.4.custom',
         'bootstrap': 'external/bootstrap/bootstrap.min',
         'bootstrap-dtp': 'external/bootstrap/bootstrap-datetimepicker.min',
-        'moment': 'external/moment/moment.min'
+        'moment': 'external/moment/moment.min',
+        'd3': 'external/d3/d3.v3'
     },
 
     shim: {  
@@ -21,6 +22,9 @@ require.config({
         },
         "bootstrap-dtp": {
             deps: ['jquery', 'bootstrap', 'moment']
+        },
+        "d3": {
+            exports: ['d3']
         }
     }
 });
@@ -29,11 +33,14 @@ require([
     'jquery',
     'bootstrap',
     'modules/parser',
-    'bootstrap-dtp'
+    'bootstrap-dtp',
+    'modules/d3/concertsBands'
 ], 
 function ($) {
     $(document).ready(function() {
         $('.dropdown-toggle').dropdown();
+
+        $("body").concertBandChart();
 
         $('.cs-js-add-band-record-to-concert .cs-js-datetimepicker').datetimepicker({
             icons: {
