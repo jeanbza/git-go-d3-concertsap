@@ -4,11 +4,11 @@ import (
     "net/http"
 
     "git-go-d3-concertsap/app/home"
-    "git-go-d3-concertsap/app/admin/concert"
-    "git-go-d3-concertsap/app/admin/state"
-    "git-go-d3-concertsap/app/admin/band"
-    "git-go-d3-concertsap/app/admin/ticket"
-    "git-go-d3-concertsap/app/admin/retailer"
+    "git-go-d3-concertsap/app/concert"
+    "git-go-d3-concertsap/app/state"
+    "git-go-d3-concertsap/app/band"
+    "git-go-d3-concertsap/app/ticket"
+    "git-go-d3-concertsap/app/retailer"
 
     "github.com/gorilla/mux"
 )
@@ -20,24 +20,24 @@ func main() {
     
     r.HandleFunc("/", HandleHome).Methods("GET")
 
-    // Concert
-    s := r.PathPrefix("/admin/concert").Subrouter()
+    // Admin Concert
+    s := r.PathPrefix("/concert").Subrouter()
     concert.Route(s)
 
-    // Retailer
-    s = r.PathPrefix("/admin/retailer").Subrouter()
+    // Admin Retailer
+    s = r.PathPrefix("/retailer").Subrouter()
     retailer.Route(s)
 
-    // State
-    s = r.PathPrefix("/admin/state").Subrouter()
+    // Admin State
+    s = r.PathPrefix("/state").Subrouter()
     state.Route(s)
 
-    // Band
-    s = r.PathPrefix("/admin/band").Subrouter()
+    // Admin Band
+    s = r.PathPrefix("/band").Subrouter()
     band.Route(s)
 
-    // Ticket
-    s = r.PathPrefix("/admin/ticket").Subrouter()
+    // Admin Ticket
+    s = r.PathPrefix("/ticket").Subrouter()
     ticket.Route(s)
 
     fileServer := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
