@@ -42,7 +42,7 @@ func adminViewAllHandler(rw http.ResponseWriter, req *http.Request) {
         Bands:      bands,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/viewAll.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/band/adminViewAll.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -61,7 +61,7 @@ func adminViewOneHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "View One Controller: "+id,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/viewOne.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/band/adminViewOne.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }

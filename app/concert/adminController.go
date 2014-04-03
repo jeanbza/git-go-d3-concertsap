@@ -57,7 +57,7 @@ func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
         Concerts:   concerts,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/concert/viewAll.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/concert/adminViewAll.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -76,7 +76,7 @@ func viewOneHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "View One Controller: "+id,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/concert/viewOne.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/concert/adminViewOne.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
