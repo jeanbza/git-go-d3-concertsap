@@ -12,7 +12,7 @@ import (
 
 func Route(s *mux.Router) {
     s.HandleFunc("/", loginHandler)
-    s.HandleFunc("/validate{_:/?}", validateHandler)
+    s.HandleFunc("/validate{_:/?}", validateHandler).Methods("POST")
 }
 
 func loginHandler(rw http.ResponseWriter, req *http.Request) {
