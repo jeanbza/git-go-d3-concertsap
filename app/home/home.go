@@ -7,12 +7,12 @@ import (
     "git-go-d3-concertsap/app/common"
 )
 
-type Page struct {
-    PageName    string
-    Title       string
-}
+func HomeViewHandler(rw http.ResponseWriter, req *http.Request) {
+    type Page struct {
+        PageName    string
+        Title       string
+    }
 
-func GetPage(rw http.ResponseWriter, req *http.Request) {
     p := Page{
         PageName:   "home",
         Title:      "Home",

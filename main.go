@@ -18,10 +18,13 @@ func main() {
 
     http.Handle("/", r)
     
-    r.HandleFunc("/", HandleHome).Methods("GET")
+    r.HandleFunc("/", home.HomeViewHandler).Methods("GET")
+    
+    s := r.PathPrefix("/login").Subrouter()
+    home.Route(s)
 
     // User Concert
-    s := r.PathPrefix("/concert").Subrouter()
+    s = r.PathPrefix("/concert").Subrouter()
     concert.RouteUser(s)
 
     // User Band
@@ -52,8 +55,4 @@ func main() {
     http.Handle("/static/", fileServer)
 
     http.ListenAndServe(":8080", nil)
-}
-
-func HandleHome(rw http.ResponseWriter, req *http.Request) {
-    home.GetPage(rw, req)
 }
