@@ -6,7 +6,7 @@ import (
     "strconv"
     
     "git-go-d3-concertsap/app/common"
-    "git-go-d3-concertsap/app/state"
+    "git-go-d3-concertsap/app/admin/state"
 
     "github.com/gorilla/mux"
 )
@@ -57,7 +57,7 @@ func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
         Concerts:   concerts,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/concert/viewAll.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/concert/viewAll.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -76,7 +76,7 @@ func viewOneHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "View One Controller: "+id,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/concert/viewOne.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/concert/viewOne.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -95,7 +95,7 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "Edit Controller: "+id,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/concert/edit.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/concert/edit.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -113,7 +113,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
         States:     state.FindAll(),
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/concert/add.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/concert/add.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }

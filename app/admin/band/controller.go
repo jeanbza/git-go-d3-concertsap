@@ -9,7 +9,7 @@ import (
 
     "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/database"
-    "git-go-d3-concertsap/app/concert"
+    "git-go-d3-concertsap/app/admin/concert"
 
     "github.com/gorilla/mux"
 )
@@ -125,7 +125,7 @@ func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
         Bands:      bands,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/viewAll.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/band/viewAll.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -144,7 +144,7 @@ func viewOneHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "View One Controller: "+id,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/viewOne.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/band/viewOne.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -163,7 +163,7 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "Edit Controller: "+id,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/edit.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/band/edit.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -179,7 +179,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "Add Controller",
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/add.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/band/add.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -199,7 +199,7 @@ func addBandsToConcertHandler(rw http.ResponseWriter, req *http.Request) {
         Concerts:   concerts,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/addBandsToConcert.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/band/addBandsToConcert.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -219,7 +219,7 @@ func addBandRecordToConcertHandler(rw http.ResponseWriter, req *http.Request) {
         Concerts:   concerts,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/band/addBandRecordToConcert.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/band/addBandRecordToConcert.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }

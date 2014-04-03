@@ -6,8 +6,8 @@ import (
     "time"
 
     "git-go-d3-concertsap/app/common"
-    "git-go-d3-concertsap/app/concert"
-    "git-go-d3-concertsap/app/retailer"
+    "git-go-d3-concertsap/app/admin/concert"
+    "git-go-d3-concertsap/app/admin/retailer"
 
     "github.com/gorilla/mux"
 )
@@ -39,7 +39,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
         Now:        t.Format("2006-01-02 15:04:05"),
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/ticket/add.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/ticket/add.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }

@@ -50,7 +50,7 @@ func viewAllHandler(rw http.ResponseWriter, req *http.Request) {
         States:     states,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/state/viewAll.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/state/viewAll.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -69,7 +69,7 @@ func viewOneHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "View One Controller: "+id,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/state/viewOne.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/state/viewOne.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -88,7 +88,7 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "Edit Controller: "+id,
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/state/edit.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/state/edit.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
@@ -116,7 +116,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
         Title:      "Add New Concert",
     }
 
-    common.Templates = template.Must(template.ParseFiles("templates/state/add.html", common.LayoutPath))
+    common.Templates = template.Must(template.ParseFiles("templates/admin/state/add.html", common.LayoutPath))
     err := common.Templates.ExecuteTemplate(rw, "base", p)
     common.CheckError(err)
 }
