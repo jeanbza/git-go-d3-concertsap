@@ -20,8 +20,16 @@ func main() {
     
     r.HandleFunc("/", HandleHome).Methods("GET")
 
+    // User Concert
+    s := r.PathPrefix("/concert").Subrouter()
+    concert.RouteUser(s)
+
+    // User Band
+    s = r.PathPrefix("/band").Subrouter()
+    band.RouteUser(s)
+
     // Admin Concert
-    s := r.PathPrefix("/admin/concert").Subrouter()
+    s = r.PathPrefix("/admin/concert").Subrouter()
     concert.RouteAdmin(s)
 
     // Admin Band
