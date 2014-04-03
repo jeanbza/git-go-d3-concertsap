@@ -30,7 +30,7 @@ func adminViewAllHandler(rw http.ResponseWriter, req *http.Request) {
     concerts := FindAll()
 
     p := Page{
-        PageName:   "concert",
+        PageName:   "admin_concert",
         Title:      "View All Concerts",
         Concerts:   concerts,
     }
@@ -50,7 +50,7 @@ func adminViewOneHandler(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        PageName:   "concert",
+        PageName:   "admin_concert",
         Title:      "View One Controller: "+id,
     }
 
@@ -91,7 +91,7 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        PageName:   "concert",
+        PageName:   "admin_concert",
         Title:      "Edit Controller: "+id,
     }
 
@@ -108,7 +108,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        PageName:   "concert",
+        PageName:   "admin_concert",
         Title:      "Add Controller",
         States:     state.FindAll(),
     }

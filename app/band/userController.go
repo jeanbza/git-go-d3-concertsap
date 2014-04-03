@@ -25,7 +25,7 @@ func userViewAllHandler(rw http.ResponseWriter, req *http.Request) {
     bands := FindAll()
 
     p := Page{
-        PageName:   "band",
+        PageName:   "user_band",
         Title:      "View All Bands",
         Bands:      bands,
     }
@@ -45,7 +45,7 @@ func userViewOneHandler(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        PageName:   "band",
+        PageName:   "user_band",
         Title:      "View One Controller: "+id,
     }
 

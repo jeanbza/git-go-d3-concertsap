@@ -37,7 +37,7 @@ func adminViewAllHandler(rw http.ResponseWriter, req *http.Request) {
     bands := FindAll()
 
     p := Page{
-        PageName:   "band",
+        PageName:   "admin_band",
         Title:      "View All Bands",
         Bands:      bands,
     }
@@ -57,7 +57,7 @@ func adminViewOneHandler(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        PageName:   "band",
+        PageName:   "admin_band",
         Title:      "View One Controller: "+id,
     }
 
@@ -159,7 +159,7 @@ func editHandler(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        PageName:   "band",
+        PageName:   "admin_band",
         Title:      "Edit Controller: "+id,
     }
 
@@ -175,7 +175,7 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
     }
 
     p := Page{
-        PageName:   "band",
+        PageName:   "admin_band",
         Title:      "Add Controller",
     }
 
@@ -194,7 +194,7 @@ func addBandsToConcertHandler(rw http.ResponseWriter, req *http.Request) {
     concerts := concert.FindAll()
 
     p := Page{
-        PageName:   "band",
+        PageName:   "admin_band",
         Title:      "Add Controller",
         Concerts:   concerts,
     }
@@ -214,7 +214,7 @@ func addBandRecordToConcertHandler(rw http.ResponseWriter, req *http.Request) {
     concerts := concert.FindAll()
 
     p := Page{
-        PageName:   "band",
+        PageName:   "admin_band",
         Title:      "Add Controller",
         Concerts:   concerts,
     }
