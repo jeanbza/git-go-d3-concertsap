@@ -103,7 +103,7 @@ define(['jquery', 'd3', 'jqueryui'], function ($, d3) {
                 .innerRadius(innerRadius)
                 .outerRadius(innerRadius + 20);
 
-            var svg = d3.select("body").append("svg")
+            var svg = d3.select("."+self.options.elem.attr("class")).append("svg")
                 .attr("width", outerRadius * 2)
                 .attr("height", outerRadius * 2)
               .append("g")

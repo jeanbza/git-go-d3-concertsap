@@ -40,7 +40,7 @@ function ($) {
     $(document).ready(function() {
         $('.dropdown-toggle').dropdown();
 
-        // $("body").concertBandChart();
+        $(".cs-js-concert-graph").concertBandChart();
 
         $('.cs-js-add-band-record-to-concert .cs-js-datetimepicker').datetimepicker({
             icons: {

@@ -3,30 +3,27 @@
         <h2 class="cs-inline">{{.Title}}</h2>
     </div>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>StateId</th>
-                <th>Website</th>
-                <th>Start</th>
-                <th>End</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{range .Concerts}}
+    <div class="col-md-4">
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>{{.Id}}</td>
-                    <td>{{.Name}}</td>
-                    <td>{{.Address}}</td>
-                    <td>{{.StateId}}</td>
-                    <td>{{.Website}}</td>
-                    <td>{{.Start}}</td>
-                    <td>{{.End}}</td>
+                    <th>Name</th>
+                    <th>Start</th>
+                    <th>End</th>
                 </tr>
-            {{end}}
-        </thead>
-    </table>
+            </thead>
+            <tbody>
+                {{range .Concerts}}
+                    <tr>
+                        <td>{{.Name}}</td>
+                        <td>{{.Start}}</td>
+                        <td>{{.End}}</td>
+                    </tr>
+                {{end}}
+            </thead>
+        </table>
+    </div>
+    <div class="col-md-8">
+        <div class="cs-js-concert-graph"></div>
+    </div>
 {{end}}
