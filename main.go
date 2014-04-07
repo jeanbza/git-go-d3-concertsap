@@ -9,6 +9,7 @@ import (
     "git-go-d3-concertsap/app/band"
     "git-go-d3-concertsap/app/ticket"
     "git-go-d3-concertsap/app/retailer"
+    "git-go-d3-concertsap/app/api"
 
     "github.com/gorilla/mux"
 )
@@ -20,8 +21,13 @@ func main() {
     
     r.HandleFunc("/", home.HomeViewHandler).Methods("GET")
     
+    // Login
     s := r.PathPrefix("/login").Subrouter()
     home.Route(s)
+
+    // API
+    s = r.PathPrefix("/api").Subrouter()
+    routeAPI(s)
 
     // User Concert
     s = r.PathPrefix("/concert").Subrouter()
@@ -55,4 +61,8 @@ func main() {
     http.Handle("/static/", fileServer)
 
     http.ListenAndServe(":8080", nil)
+}
+
+func routeAPI(s *mux.Router) {
+    s.HandleFunc("/getConcertBands{_:/?}", api.ConcertBandHandler)
 }
