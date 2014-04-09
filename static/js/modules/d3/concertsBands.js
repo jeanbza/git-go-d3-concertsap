@@ -4,6 +4,13 @@ define(['jquery', 'd3', 'jqueryui'], function ($, d3) {
             var self = this;
             self.options.elem = $(self.element);
 
+            $.ajax({
+                url: "/api/getConcertBands",
+                success: function(data) {
+                    console.dir(JSON.parse(data));
+                }
+            });
+
             var joinedMusicians = joinDuplicates(self.getMusiciansList());
             trimArr(joinedMusicians, 2);
             var imports = convertToJSONFlare(joinedMusicians);
