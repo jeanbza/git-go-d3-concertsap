@@ -42,11 +42,15 @@ func userViewOneHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
+        Concert     Concert
     }
+
+    concert := FindOne(id)
 
     p := Page{
         PageName:   "user_concert",
         Title:      "View One Controller: "+id,
+        Concert:    concert,
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/concert/userViewOne.html", common.LayoutPath))

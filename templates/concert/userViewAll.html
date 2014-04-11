@@ -15,7 +15,7 @@
             <tbody>
                 {{range .Concerts}}
                     <tr>
-                        <td>{{.Name}}</td>
+                        <td><a href="/concert/{{.Id}}">{{.Name}}</a></td>
                         <td>{{.Start}}</td>
                         <td>{{.End}}</td>
                     </tr>
