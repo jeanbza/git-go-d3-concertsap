@@ -12,17 +12,12 @@ type State struct {
 }
 
 func FindAll() []State {
-    // initialize the DbMap
     dbmap := db.InitDb(State{}, "state")
     defer dbmap.Db.Close()
 
     var states []State
-    _, err := dbmap.Select(&states, "SELECT * FROM state ORDER BY name")
+    _, err := dbmap.Select(&states, "SELECT * FROM state ORDER BY acronym")
     common.CheckError(err)
-
-    for _,state := range states {
-        states = append(states, state)
-    }
 
     return states
 }
