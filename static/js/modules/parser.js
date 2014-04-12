@@ -6,7 +6,8 @@ define(['jquery', 'jqueryui'], function ($) {
 
             self.options.elem.keyup(function() {
                 var rawText = $(this).val();
-                var matches = self.regexMatch(/([^ {2,}]+)/g, rawText);
+                var matches = rawText.split(new RegExp(['\n', '•'].join('|'), 'g'));
+                console.dir(matches);
                 var parsedString = "";
 
                 matches.forEach(function(item) {
