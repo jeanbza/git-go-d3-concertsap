@@ -4,6 +4,7 @@ import (
     "net/http"
     "html/template"
     "strconv"
+    "time"
     
     "git-go-d3-concertsap/app/common"
     "git-go-d3-concertsap/app/state"
@@ -105,12 +106,16 @@ func addHandler(rw http.ResponseWriter, req *http.Request) {
         PageName    string
         Title       string
         States      []state.State
+        Now         string
     }
+
+    t := time.Now()
 
     p := Page{
         PageName:   "admin_concert",
         Title:      "Add Controller",
         States:     state.FindAll(),
+        Now:        t.Format("2006-01-02"),
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/concert/add.html", common.LayoutPath))

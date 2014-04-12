@@ -63,6 +63,16 @@ function ($) {
             }
         });
 
+        $('.cs-js-datepicker').datetimepicker({
+            pickTime: false,
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-arrow-up",
+                down: "fa fa-arrow-down"
+            }
+        });
+
         $(".cs-js-parse-input").parser({
             elemDisplay: $(".cs-js-parse-display"),
             elemOutput: $(".cs-js-parse-output"),

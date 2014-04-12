@@ -1,8 +1,6 @@
 package concert
 
 import (
-    "log"
-
     "git-go-d3-concertsap/app/database"
     "git-go-d3-concertsap/app/common"
 )
@@ -42,8 +40,6 @@ func FindOne(id string) (Concert) {
     var concert Concert
     err := dbmap.SelectOne(&concert, "SELECT * FROM concert WHERE id = ? ORDER BY name", id)
     common.CheckError(err)
-
-    log.Println(concert)
 
     return concert
 }
