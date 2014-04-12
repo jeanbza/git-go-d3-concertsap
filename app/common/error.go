@@ -1,8 +1,8 @@
 package common
 
 import (
-	"fmt"
-	// "os"
+    "log"
+    "runtime"
 )
 
 func CheckError(err error) {
@@ -13,7 +13,9 @@ func CheckError(err error) {
 }
 
 func ReportError(err error) {
-    fmt.Println("Fatal error caught by common.CheckError: ", err.Error())
+    var stack [4096]byte
+    runtime.Stack(stack[:], false)
+    log.Printf("%q\n%s\n", err, stack[:])
 }
 
 func IssetInForm(form []string, index int) string {
