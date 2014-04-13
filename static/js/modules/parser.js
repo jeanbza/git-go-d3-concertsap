@@ -6,12 +6,11 @@ define(['jquery', 'jqueryui'], function ($) {
 
             self.options.elem.keyup(function() {
                 var rawText = $(this).val();
-                var matches = rawText.split(new RegExp(['\n', '•'].join('|'), 'g'));
-                console.dir(matches);
+                var matches = rawText.split(new RegExp(['\n', '•', ','].join('|'), 'g'));
                 var parsedString = "";
 
                 matches.forEach(function(item) {
-                    parsedString += item+"<br>";
+                    parsedString += $.trim(item)+"<br>";
                 });
 
                 self.options.elemDisplay.html(parsedString);
