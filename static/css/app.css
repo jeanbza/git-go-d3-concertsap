@@ -1,255 +1,3 @@
-/* line 1, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.row {
-  margin: 0;
-}
-
-/* line 6, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-}
-/* line 9, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-brand {
-  color: #bdc3c7;
-}
-/* line 11, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #ecf0f1;
-}
-/* line 14, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > li > a {
-  color: #bdc3c7;
-}
-/* line 16, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #ecf0f1;
-}
-/* line 18, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > .active > a {
-  color: #ecf0f1;
-  background-color: #c0392b;
-}
-/* line 21, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #ecf0f1;
-  background-color: #c0392b;
-}
-/* line 24, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > .open > a {
-  color: #555555;
-  background-color: #d5d5d5;
-}
-/* line 27, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  color: #555555;
-  background-color: #d5d5d5;
-}
-/* line 31, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > .dropdown > a .caret {
-  border-top-color: #777777;
-  border-bottom-color: #777777;
-}
-/* line 34, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > .dropdown > a:hover .caret, .navbar-default .navbar-nav > .dropdown > a:focus .caret {
-  border-top-color: #333333;
-  border-bottom-color: #333333;
-}
-/* line 38, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-nav > .open > a .caret, .navbar-default .navbar-nav > .open > a:hover .caret, .navbar-default .navbar-nav > .open > a:focus .caret {
-  border-top-color: #555555;
-  border-bottom-color: #555555;
-}
-/* line 41, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-toggle {
-  border-color: #dddddd;
-}
-/* line 43, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #dddddd;
-}
-/* line 45, ../sass/ui_patterns/_bootstrap_overrides.sass */
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #cccccc;
-}
-
-/* line 7, ../sass/_ui_patterns.sass */
-.cs-bottom-pad-lt {
-  padding-bottom: 5px;
-}
-
-/* line 10, ../sass/_ui_patterns.sass */
-.cs-bottom-pad {
-  padding-bottom: 10px;
-}
-
-/* line 13, ../sass/_ui_patterns.sass */
-.cs-bottom-pad-lg {
-  padding-bottom: 20px;
-}
-
-/* line 16, ../sass/_ui_patterns.sass */
-.cs-right-pad-lt {
-  padding-right: 5px;
-}
-
-/* line 19, ../sass/_ui_patterns.sass */
-.cs-right-pad {
-  padding-right: 10px;
-}
-
-/* line 22, ../sass/_ui_patterns.sass */
-.cs-right-pad-lg {
-  padding-right: 20px;
-}
-
-/* line 25, ../sass/_ui_patterns.sass */
-.cs-right-margin-lt {
-  margin-right: 5px;
-}
-
-/* line 28, ../sass/_ui_patterns.sass */
-.cs-right-margin {
-  margin-right: 10px;
-}
-
-/* line 31, ../sass/_ui_patterns.sass */
-.cs-right-margin-lg {
-  margin-right: 20px;
-}
-
-/* line 34, ../sass/_ui_patterns.sass */
-.cs-no-margin {
-  margin: 0 !important;
-}
-
-/* line 37, ../sass/_ui_patterns.sass */
-.cs-no-pad {
-  padding: 0 !important;
-}
-
-/* line 40, ../sass/_ui_patterns.sass */
-.cs-no-float {
-  float: none !important;
-}
-
-/* line 43, ../sass/_ui_patterns.sass */
-.cs-full-width {
-  width: 100% !important;
-}
-
-/* line 46, ../sass/_ui_patterns.sass */
-.cs-float-right {
-  float: right !important;
-}
-
-/* line 49, ../sass/_ui_patterns.sass */
-.cs-float-left {
-  float: left !important;
-}
-
-/* line 52, ../sass/_ui_patterns.sass */
-.cs-inline {
-  display: inline !important;
-}
-
-/* line 55, ../sass/_ui_patterns.sass */
-.cs-block {
-  display: block !important;
-}
-
-/* line 1, ../sass/modules/header/_header_module.sass */
-.jm-header {
-  border-radius: 0;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 1px solid #e7e7e7;
-  min-height: 0;
-}
-/* line 10, ../sass/modules/header/_header_module.sass */
-.jm-header .jm-input-search {
-  width: 500px;
-}
-/* line 12, ../sass/modules/header/_header_module.sass */
-.jm-header .jm-input-search .jm-searchbar {
-  border-top: 0px;
-  border-right: 1px solid #e7e7e7;
-  border-bottom: 0px;
-  border-left: 1px solid #e7e7e7;
-  border-radius: 0;
-}
-/* line 19, ../sass/modules/header/_header_module.sass */
-.jm-header .jm-input-search .jm-search-btn {
-  border-top: 0;
-  border-right: 1px solid #e7e7e7;
-  border-bottom: 0;
-  border-left: 0;
-  border-radius: 0;
-}
-/* line 26, ../sass/modules/header/_header_module.sass */
-.jm-header .jm-header-text {
-  padding: 5px 15px 0px 15px;
-}
-
-/* line 10, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
-html, body {
-  height: 100%;
-}
-
-/* line 12, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
-.jm-standard-layout {
-  clear: both;
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin-bottom: -30px;
-}
-/* line 18, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
-.jm-standard-layout .jm-footer-root {
-  height: 30px;
-}
-
-/* line 20, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
-.jm-footer {
-  clear: both;
-  position: relative;
-  height: 30px;
-}
-
-/* line 5, ../sass/modules/footer/_footer_module.sass */
-.jm-footer {
-  text-align: center;
-  padding-top: 5px;
-  border-top: 1px solid #e7e7e7;
-}
-
-/* line 3, ../sass/modules/band/_band_add_to_concert.sass */
-.cs-add-band-to-concert .cs-parser-display .cs-parse-display-box {
-  max-height: 200px;
-  overflow-y: scroll;
-}
-
-/* line 2, ../sass/modules/band/_band_add_record_to_concert.sass */
-.cs-add-band-record-to-concert .cs-datepicker-area {
-  padding-left: 0;
-  padding-bottom: 10px;
-}
-
-/* line 3, ../sass/modules/concert/_concert_user_view_one.sass */
-.cs-concert-user-view-one .cs-header .cs-main {
-  margin-top: 0;
-}
-
-/* line 1, ../sass/layout/_standard.sass */
-.jm-standard-layout {
-  padding: 0;
-  width: 100%;
-}
-/* line 4, ../sass/layout/_standard.sass */
-.jm-standard-layout .jm-main {
-  padding: 0 15px;
-}
-
 /* line 1, ../sass/externals/jquery-ui/_jquery-ui-1.10.4.custom.sass */
 .ui-helper-hidden {
   display: none;
@@ -12756,4 +12504,189 @@ th.hidden-lg, td.hidden-lg {
   .hidden-print, tr.hidden-print, th.hidden-print, td.hidden-print {
     display: none !important;
   }
+}
+/* line 1, ../sass/ui_patterns/_bootstrap_overrides.sass */
+.row {
+  margin: 0;
+}
+
+/* line 7, ../sass/_ui_patterns.sass */
+.cs-bottom-pad-lt {
+  padding-bottom: 5px;
+}
+
+/* line 10, ../sass/_ui_patterns.sass */
+.cs-bottom-pad {
+  padding-bottom: 10px;
+}
+
+/* line 13, ../sass/_ui_patterns.sass */
+.cs-bottom-pad-lg {
+  padding-bottom: 20px;
+}
+
+/* line 16, ../sass/_ui_patterns.sass */
+.cs-right-pad-lt {
+  padding-right: 5px;
+}
+
+/* line 19, ../sass/_ui_patterns.sass */
+.cs-right-pad {
+  padding-right: 10px;
+}
+
+/* line 22, ../sass/_ui_patterns.sass */
+.cs-right-pad-lg {
+  padding-right: 20px;
+}
+
+/* line 25, ../sass/_ui_patterns.sass */
+.cs-right-margin-lt {
+  margin-right: 5px;
+}
+
+/* line 28, ../sass/_ui_patterns.sass */
+.cs-right-margin {
+  margin-right: 10px;
+}
+
+/* line 31, ../sass/_ui_patterns.sass */
+.cs-right-margin-lg {
+  margin-right: 20px;
+}
+
+/* line 34, ../sass/_ui_patterns.sass */
+.cs-no-margin {
+  margin: 0 !important;
+}
+
+/* line 37, ../sass/_ui_patterns.sass */
+.cs-no-pad {
+  padding: 0 !important;
+}
+
+/* line 40, ../sass/_ui_patterns.sass */
+.cs-no-float {
+  float: none !important;
+}
+
+/* line 43, ../sass/_ui_patterns.sass */
+.cs-full-width {
+  width: 100% !important;
+}
+
+/* line 46, ../sass/_ui_patterns.sass */
+.cs-float-right {
+  float: right !important;
+}
+
+/* line 49, ../sass/_ui_patterns.sass */
+.cs-float-left {
+  float: left !important;
+}
+
+/* line 52, ../sass/_ui_patterns.sass */
+.cs-inline {
+  display: inline !important;
+}
+
+/* line 55, ../sass/_ui_patterns.sass */
+.cs-block {
+  display: block !important;
+}
+
+/* line 1, ../sass/modules/header/_header_module.sass */
+.cs-header {
+  border-radius: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #e7e7e7;
+  min-height: 0;
+}
+/* line 9, ../sass/modules/header/_header_module.sass */
+.cs-header .cs-input-search {
+  width: 500px;
+}
+/* line 11, ../sass/modules/header/_header_module.sass */
+.cs-header .cs-input-search .cs-searchbar {
+  border-top: 0px;
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 0px;
+  border-left: 1px solid #e7e7e7;
+  border-radius: 0;
+}
+/* line 18, ../sass/modules/header/_header_module.sass */
+.cs-header .cs-input-search .cs-search-btn {
+  border-top: 0;
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+/* line 25, ../sass/modules/header/_header_module.sass */
+.cs-header .cs-header-text {
+  padding: 5px 15px 0px 15px;
+}
+
+/* line 10, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 12, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+.cs-standard-layout {
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -30px;
+}
+/* line 18, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+.cs-standard-layout .cs-footer-root {
+  height: 30px;
+}
+
+/* line 20, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+.cs-footer {
+  clear: both;
+  position: relative;
+  height: 30px;
+}
+
+/* line 5, ../sass/modules/footer/_footer_module.sass */
+.cs-footer {
+  text-align: center;
+  padding-top: 5px;
+  border-top: 1px solid #e7e7e7;
+}
+
+/* line 3, ../sass/modules/band/_band_add_to_concert.sass */
+.cs-add-band-to-concert .cs-parser-display .cs-parse-display-box {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+/* line 2, ../sass/modules/band/_band_add_record_to_concert.sass */
+.cs-add-band-record-to-concert .cs-datepicker-area {
+  padding-left: 0;
+  padding-bottom: 10px;
+}
+
+/* line 2, ../sass/modules/concert/_concert_user_view_one.sass */
+.cs-concert-user-view-one .cs-header {
+  border-bottom: 1px solid #e7e7e7;
+}
+/* line 4, ../sass/modules/concert/_concert_user_view_one.sass */
+.cs-concert-user-view-one .cs-header .cs-main {
+  margin-top: 0;
+}
+
+/* line 1, ../sass/layout/_standard.sass */
+.cs-standard-layout {
+  padding: 0;
+}
+/* line 3, ../sass/layout/_standard.sass */
+.cs-standard-layout .cs-main {
+  padding: 0;
 }
