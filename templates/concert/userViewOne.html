@@ -1,3 +1,18 @@
 {{define "body"}}
-    <h2>You are viewing {{.Concert.Name}}</h2>
+    <div class="cs-concert-user-view-one">
+        <div class="cs-header">
+            <div class="row">
+                <h1 class="cs-main">
+                    <div class="cs-float-left">{{.Concert.Name}}</div>
+                    <div class="cs-float-right">54 days</div>
+                </h1>
+            </div>
+            <div class="row">
+                <h4 class="cs-aux">
+                    <div class="cs-float-left"><a target="_blank" href="{{.Concert.Website}}">{{.Concert.Website}}</a></div>
+                    <div class="cs-float-right">to go</div>
+                </h4>
+            </div>
+        </div>
+    </div>
 {{end}}
