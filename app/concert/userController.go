@@ -3,7 +3,6 @@ package concert
 import (
     "net/http"
     "html/template"
-    "log"
     "time"
     
     "git-go-d3-concertsap/app/common"
@@ -54,9 +53,6 @@ func userViewOneHandler(rw http.ResponseWriter, req *http.Request) {
     var concertState int
     var untilDays int
 
-    log.Println(concert.Start)
-    log.Println(concert.End)
-
     tStart, terr := time.Parse("2006-01-02 15:04:05", concert.Start+" 23:59:59")
     common.CheckError(terr)
 
@@ -76,8 +72,6 @@ func userViewOneHandler(rw http.ResponseWriter, req *http.Request) {
         concertState = 3
         untilDays = -1*int(time.Since(tStart).Hours()/24)+1
     }
-
-    log.Println("test")
 
     p := Page{
         PageName:       "user_concert",
