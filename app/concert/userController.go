@@ -42,39 +42,49 @@ func userViewOneHandler(rw http.ResponseWriter, req *http.Request) {
     id := params["id"]
 
     type Page struct {
-        PageName    string
-        Title       string
-        Concert     Concert
+        PageName        string
+        Title           string
+        Concert         Concert
+        ConcertState    int
+        UntilDays       int
     }
 
     concert := FindOne(id)
 
-    // var concertInFuture bool
-    // var untilDays int
+    var concertState int
+    var untilDays int
 
-    tStart, terr := time.Parse("2006-01-02", "2014-04-08")
+    log.Println(concert.Start)
+    log.Println(concert.End)
+
+    tStart, terr := time.Parse("2006-01-02 15:04:05", concert.Start+" 23:59:59")
     common.CheckError(terr)
 
-    tEnd, terr := time.Parse("2006-01-02", "2014-04-26")
+    tEnd, terr := time.Parse("2006-01-02 15:04:05", concert.End+" 23:59:59")
     common.CheckError(terr)
 
-    if (time.Now().After(tStart)) {
-        // Concert is in the future
-        // concertInFuture = true
-
-        log.Println("start")
-        log.Println(int(time.Since(tStart).Hours()/24))
+    if (time.Now().After(tEnd)) {
+        // Concert is in the past - concertState = 1
+        concertState = 1
+        untilDays = int(time.Since(tEnd).Hours()/24)+1
+    } else if (time.Now().After(tStart)) {
+        // Concert is now! - concertState = 2
+        concertState = 2
+        untilDays = int(time.Since(tEnd).Hours()/24)+1
     } else {
-        // Concert is in the past
-        
-        log.Println("end")
-        log.Println(time.Since(tEnd).Hours()/24)
+        // Concert is in the future - concertState = 3
+        concertState = 3
+        untilDays = -1*int(time.Since(tStart).Hours()/24)+1
     }
 
+    log.Println("test")
+
     p := Page{
-        PageName:   "user_concert",
-        Title:      "View One Controller: "+id,
-        Concert:    concert,
+        PageName:       "user_concert",
+        Title:          "View One Controller: "+id,
+        Concert:        concert,
+        ConcertState:   concertState,
+        UntilDays:      untilDays,
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/concert/userViewOne.html", common.LayoutPath))
