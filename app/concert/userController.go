@@ -3,6 +3,8 @@ package concert
 import (
     "net/http"
     "html/template"
+    "log"
+    "time"
     
     "git-go-d3-concertsap/app/common"
 
@@ -46,6 +48,28 @@ func userViewOneHandler(rw http.ResponseWriter, req *http.Request) {
     }
 
     concert := FindOne(id)
+
+    // var concertInFuture bool
+    // var untilDays int
+
+    tStart, terr := time.Parse("2006-01-02", "2014-04-08")
+    common.CheckError(terr)
+
+    tEnd, terr := time.Parse("2006-01-02", "2014-04-26")
+    common.CheckError(terr)
+
+    if (time.Now().After(tStart)) {
+        // Concert is in the future
+        // concertInFuture = true
+
+        log.Println("start")
+        log.Println(int(time.Since(tStart).Hours()/24))
+    } else {
+        // Concert is in the past
+        
+        log.Println("end")
+        log.Println(time.Since(tEnd).Hours()/24)
+    }
 
     p := Page{
         PageName:   "user_concert",
