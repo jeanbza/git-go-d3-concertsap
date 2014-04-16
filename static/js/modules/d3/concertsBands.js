@@ -13,10 +13,10 @@ define(['jquery', 'd3', 'jqueryui'], function ($, d3) {
         },
 
         render: function(musiciansList) {
-          var self = this;
-          var joinedMusicians = self.joinDuplicates(musiciansList);
-          self.trimArr(joinedMusicians, 2);
-          var imports = self.convertToJSONFlare(joinedMusicians);
+            var self = this;
+            var joinedMusicians = self.joinDuplicates(musiciansList);
+            self.trimArr(joinedMusicians, 2);
+            var imports = self.convertToJSONFlare(joinedMusicians);
 
             var outerRadius = 760 / 2,
                 innerRadius = outerRadius - 130;

@@ -58,7 +58,8 @@ func FindBandConcert(concertId string) ([]BandJoinedConcert) {
         ON b.id = bc.band_id
         JOIN concert c
         ON c.id = bc.concert_id
-        `+concertIdString)
+        `+concertIdString+`
+        ORDER BY b.name`)
     common.CheckError(err)
 
     return bandConcerts

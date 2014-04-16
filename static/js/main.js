@@ -32,8 +32,9 @@ require.config({
 require([
     'jquery',
     'bootstrap',
-    'modules/parser',
     'bootstrap-dtp',
+    'modules/parser',
+    'modules/concertBandsSelect',
     'modules/d3/concertsBands'
 ], 
 function ($) {
@@ -77,5 +78,7 @@ function ($) {
             elemDisplay: $(".cs-js-parse-display"),
             elemOutput: $(".cs-js-parse-output"),
         });
+
+        $(".cs-js-concert-bands-select").concertBandsSelect();
     });
 });

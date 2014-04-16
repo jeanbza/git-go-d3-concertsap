@@ -113,27 +113,19 @@ func saveBandsToConcertHandler(rw http.ResponseWriter, req *http.Request) {
 }
 
 func saveBandRecordToConcertHandler(rw http.ResponseWriter, req *http.Request) {
-    dbmap := db.InitDb(Band{}, "band")
-
     err := req.ParseForm()
     common.CheckError(err)
     form := req.Form
 
     concertId, err := strconv.ParseInt(form["concert_id"][0], 10, 64)
     common.CheckError(err)
-    newBand := Band{Name: strings.ToUpper(form["name"][0])}
-    err = dbmap.SelectOne(&newBand, "SELECT * FROM concertsap.band WHERE name=?", strings.ToUpper(newBand.Name))
+    
+    bandId, err := strconv.ParseInt(form["band_id"][0], 10, 64)
 
-    if err != nil {
-        insertBand(newBand)
-        err = dbmap.SelectOne(&newBand, "SELECT * FROM concertsap.band WHERE name=?", newBand.Name)
-    }
-
-    dbmap.Db.Close()
-    dbmap = db.InitDb(BandConcert{}, "band_concert")
+    dbmap := db.InitDb(BandConcert{}, "band_concert")
     defer dbmap.Db.Close()
 
-    bandConcert := BandConcert{BandId: newBand.Id, ConcertId: concertId}
+    bandConcert := BandConcert{BandId: bandId, ConcertId: concertId}
     err = dbmap.SelectOne(&bandConcert, "SELECT * FROM concertsap.concert_band WHERE band_id=? AND concert_id=?", bandConcert.BandId, bandConcert.ConcertId)
 
     if err != nil {

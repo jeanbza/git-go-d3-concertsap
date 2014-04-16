@@ -6,15 +6,16 @@
         <div class="panel-body">
             <form role="form" method="POST" action="saveBandRecordToConcert">
                 <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Artist/Group Name">
-                </div>
-                <div class="form-group">
                     <label>Concert</label>
-                    <select class="form-control" name="concert_id">
+                    <select class="form-control cs-js-concert-select" name="concert_id">
                         {{range .Concerts}}
                             <option value="{{.Id}}">{{.Name}}</option>
                         {{end}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Band</label>
+                    <select class="form-control cs-js-concert-bands-select" concert-select-class="cs-js-concert-select" name="band_id">
                     </select>
                 </div>
                 <div class='col-sm-3 cs-no-float cs-datepicker-area'>
