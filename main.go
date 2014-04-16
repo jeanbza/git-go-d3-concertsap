@@ -64,5 +64,5 @@ func main() {
 }
 
 func routeAPI(s *mux.Router) {
-    s.HandleFunc("/getConcertBands{_:/?}", api.ConcertBandHandler)
+    s.HandleFunc("/getConcertBands{_:/?}{id:[0-9]*}", api.ConcertBandHandler)
 }

@@ -31,9 +31,15 @@ func insertBandConcert(bandConcert BandConcert) {
     dbmap.Insert(&bandConcert)
 }
 
-func FindBandConcert() ([]BandJoinedConcert) {
+func FindBandConcert(concertId string) ([]BandJoinedConcert) {
     dbmap := db.InitDb(BandConcert{}, "band_concert")
     defer dbmap.Db.Close()
+
+    var concertIdString string
+
+    if (concertId != "") {
+        concertIdString = "AND c.id = "+concertId
+    }
 
     var bandConcerts []BandJoinedConcert
     _, err := dbmap.Select(&bandConcerts, `
@@ -52,7 +58,7 @@ func FindBandConcert() ([]BandJoinedConcert) {
         ON b.id = bc.band_id
         JOIN concert c
         ON c.id = bc.concert_id
-    `)
+        `+concertIdString)
     common.CheckError(err)
 
     return bandConcerts
