@@ -19,15 +19,15 @@ func userViewAllHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
-        Bands       []Band
+        Bands       []BandAndConcertsCount
     }
 
-    bands := FindAll()
+    bandsWithConcertsCount := FindBandsAndConcerts()
 
     p := Page{
         PageName:   "user_band",
         Title:      "View All Bands",
-        Bands:      bands,
+        Bands:      bandsWithConcertsCount,
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/band/userViewAll.html", common.LayoutPath))
