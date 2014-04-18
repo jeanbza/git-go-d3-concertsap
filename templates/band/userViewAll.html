@@ -2,22 +2,7 @@
     <div class="cs-bottom-pad">
         <h2 class="cs-inline">{{.Title}}</h2>
     </div>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Website</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{range .Bands}}
-                <tr>
-                    <td>{{.Id}}</td>
-                    <td>{{.Name}}</td>
-                    <td>{{.Website}}</td>
-                </tr>
-            {{end}}
-        </thead>
-    </table>
+    {{range .Bands}}
+        <a href="{{.Id}}">{{.Name}}</a>
+    {{end}}
 {{end}}
