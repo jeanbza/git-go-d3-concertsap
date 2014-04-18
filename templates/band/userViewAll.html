@@ -3,6 +3,6 @@
         <h2 class="cs-inline">{{.Title}}</h2>
     </div>
     {{range .Bands}}
-        <a href="{{.Id}}">{{.Name}}</a>
+        <a href="{{.Id}}" style="font-size:{{.ConcertsCount}}em">{{.Name}}</a>
     {{end}}
 {{end}}
