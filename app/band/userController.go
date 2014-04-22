@@ -5,6 +5,7 @@ import (
     "html/template"
 
     "git-go-d3-concertsap/app/common"
+    "git-go-d3-concertsap/app/concert"
 
     "github.com/gorilla/mux"
 )
@@ -42,11 +43,18 @@ func userViewOneHandler(rw http.ResponseWriter, req *http.Request) {
     type Page struct {
         PageName    string
         Title       string
+        Band        Band
+        Concerts    []concert.Concert
     }
+
+    band := FindOne(id)
+    concerts := concert.FindConcertsByBand(id)
 
     p := Page{
         PageName:   "user_band",
         Title:      "View One Controller: "+id,
+        Band:       band,
+        Concerts:   concerts,
     }
 
     common.Templates = template.Must(template.ParseFiles("templates/band/userViewOne.html", common.LayoutPath))

@@ -24,6 +24,17 @@ func insertBand(band Band) {
     dbmap.Insert(&band)
 }
 
+func FindOne(id string) (Band) {
+    dbmap := db.InitDb(Band{}, "band")
+    defer dbmap.Db.Close()
+
+    var band Band
+    err := dbmap.SelectOne(&band, "SELECT * FROM band WHERE id = ? ORDER BY name", id)
+    common.CheckError(err)
+
+    return band
+}
+
 func FindAll() ([]Band) {
     dbmap := db.InitDb(Band{}, "band")
     defer dbmap.Db.Close()

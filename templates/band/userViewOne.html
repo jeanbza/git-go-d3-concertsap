@@ -1,3 +1,16 @@
 {{define "body"}}
-    This is band/userViewOne.html - Band/{{.Title}}
+    <div class="cs-concert-user-view-one">
+        <div class="cs-header">
+            <div class="row">
+                <h1 class="cs-main">
+                    <div class="cs-float-left">{{.Band.Name}}</div>
+                </h1>
+            </div>
+            <div class="row">
+                <h4 class="cs-aux">
+                    <div class="cs-float-left"><a target="_blank" href="{{.Band.Website}}">{{.Band.Website}}</a></div>
+                </h4>
+            </div>
+        </div>
+    </div>
 {{end}}

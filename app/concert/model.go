@@ -43,3 +43,20 @@ func FindOne(id string) (Concert) {
 
     return concert
 }
+
+func FindConcertsByBand(bandId string) ([]Concert) {
+    dbmap := db.InitDb(Concert{}, "concert")
+    defer dbmap.Db.Close()
+
+    var concerts []Concert
+    _, err := dbmap.Select(&concerts, `
+        SELECT c.*
+        FROM band_concert bc
+        JOIN concert c
+        ON c.id = bc.concert_id
+        WHERE bc.band_id = ?
+        ORDER BY name`, bandId)
+    common.CheckError(err)
+
+    return concerts
+}
