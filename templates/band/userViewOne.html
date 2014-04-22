@@ -12,5 +12,12 @@
                 </h4>
             </div>
         </div>
+        <div>
+            {{range .Concerts}}
+                <h3>
+                    <a href="/concert/{{.Id}}">{{.Name}}</a> <small>{{.Start}} to {{.End}}</small>
+                </h3>
+            {{end}}
+        </div>
     </div>
 {{end}}
