@@ -74,7 +74,9 @@ define(['jquery', 'd3', 'jqueryui'], function ($, d3) {
             g.append("path")
                 .style("fill", function(d) { return fill(d.index); })
                 .style("stroke", function(d) { return fill(d.index); })
-                .attr("d", arc);
+                .attr("d", arc)
+                .on("mouseover", self.fade(0.1, svg))
+                .on("mouseout", self.fade(1, svg));
 
             g.append("text")
                 .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
@@ -96,6 +98,40 @@ define(['jquery', 'd3', 'jqueryui'], function ($, d3) {
                 .attr("d", d3.svg.chord().radius(innerRadius));
 
             d3.select(self.frameElement).style("height", outerRadius * 2 + "px");
+        },
+
+        // Returns an event handler for fading a given chord group.
+        fade: function(opacity, svg) {
+            return function(g, i) {
+                svg.selectAll(".chord").filter(function(d) {
+                    return d.source.index != i && d.target.index != i;
+                }).transition().style("opacity", opacity);
+
+                var groups = [];
+                
+                svg.selectAll(".chord").filter(function(d) {
+                    if (d.source.index == i) {
+                        groups.push(d.target.index);
+                    }
+                    
+                    if (d.target.index == i) {
+                        groups.push(d.source.index);
+                    }
+                });
+
+                groups.push(i);
+                var length = groups.length;
+                
+                svg.selectAll('.group').filter(function(d) {
+                    for (var i = 0; i < length; i++) {
+                        if(groups[i] == d.index) {
+                            return false;
+                        }
+                    }
+                    
+                    return true;
+                }).transition().style("opacity", opacity);
+            };
         },
 
         joinDuplicates: function(arr) {
